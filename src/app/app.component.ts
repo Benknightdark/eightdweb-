@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+
+ ngOnInit() {
+
+  $('.button-collapse').sideNav();
+   $('.parallax').parallax();
+
+ }
 }
