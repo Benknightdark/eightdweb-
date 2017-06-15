@@ -18,6 +18,7 @@ export class CampuseventmanageComponent implements OnInit {
     content: "",
     websignurl: "",
     imageinfo: "",
+    imageurl: "",
     enable: true,
     CreateTime: "",
     UpdateTime: "",
@@ -46,32 +47,40 @@ export class CampuseventmanageComponent implements OnInit {
       const ImageName = (Date.now() + ".jpg")
       this.isFinishSubmit = !this.isFinishSubmit;
       firebase.storage().ref().child("/DM/" + ImageName).putString(this.DMImage, 'base64').then((snapshot) => {
+        this.EventData.imageurl = snapshot.metadata.fullPath;
         firebase.storage().ref().child("/DM/" + ImageName).getDownloadURL().then(a => {
           const id = UUID.UUID();
           this.EventData.id = id;
           this.EventData.imageinfo = a;
+
           this.EventData.CreateTime = Date.now().toString();
           this.EventData.UpdateTime = Date.now().toString();
-          //console.log(this.EventData);
-
           this.db.object('/EventData/' + this.EventData.id).set(this.EventData)
             .then(a => {
               confirm("成功建立新營隊訊息")
               this.isFinishSubmit = !this.isFinishSubmit;
             }
-
-
             ).catch(e => { console.log(e); confirm(e.message) })
         }).catch((e) => { console.log(e); confirm(e.message) });
       }).catch((e) => { console.log(e); confirm(e.message) });
-
     } else {
       confirm("沒有上傳圖片")
     }
 
   }
-  onRemove(id) {
-    this.db.object('/EventData/' + id).remove();
+  onRemove(item) {
+    // Create a reference to the file to delete
+    const desertRef = firebase.storage().ref().child(item.imageurl);
+
+    // Delete the file
+    desertRef.delete().then(function () {
+      console.log("delete file")
+      // File deleted successfully
+    }).catch(function (error) {
+      console.log(error)
+      // Uh-oh, an error occurred!
+    });
+    this.db.object('/EventData/' + item.id).remove();
     //    this.ShowEventData= this.db.list("/EventData")
   }
 

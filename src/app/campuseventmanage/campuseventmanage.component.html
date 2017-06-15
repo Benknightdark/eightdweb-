@@ -47,6 +47,6 @@
   <li class="collection-item" *ngFor="let item of ShowEventData |async">
     <div>{{item?.title}}
 
-      <i class="material-icons" (click)="onRemove(item?.id)">delete</i></div>
+      <i class="material-icons" (click)="onRemove(item)">delete</i></div>
   </li>
 </ul>
