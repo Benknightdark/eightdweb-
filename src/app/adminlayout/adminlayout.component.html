@@ -1,0 +1,18 @@
+<nav class="light-blue" role="navigation">
+  <div class="nav-wrapper container">
+    <a id="logo-container" href="#" class="brand-logo">AdminPlatform</a>
+    <ul class="right hide-on-med-and-down">
+      <li><a [routerLink]="['/admin/eventmanage']">營隊活動管理</a></li>
+      <li><a [routerLink]="['/admin/eventmanage']">營隊花絮管理</a></li>
+      <li><button type="button" class="waves-effect waves-light btn" (click)="onClick()">登出</button></li>
+    </ul>
+
+    <ul id="nav-mobile" class="side-nav">
+     <li><a [routerLink]="['/admin/eventmanage']">營隊活動管理</a></li>
+      <li><a [routerLink]="['/admin/eventmanage']">營隊花絮管理</a></li>
+      <li><button type="button" class="waves-effect waves-light btn" (click)="onClick()">登出</button></li>
+    </ul>
+    <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons" style="color: white;">menu</i></a>
+  </div>
+</nav>
+<router-outlet> </router-outlet>
