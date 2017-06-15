@@ -14,9 +14,21 @@ export class CampuseventComponent implements OnInit {
   ngOnInit() {
     this.ShowEventData = this.db.list("/EventData", {
       query: {
-        orderByChild: 'CreateTime',
+        orderByChild: 'CreateTime'
       }
-    }).map((arr) => arr.reverse()).share();
+    })
+      .map((arr) => {
+        const narr = []
+        arr = arr.reverse()
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i].enable === true) {
+            narr.push(arr[i])
+          }
+        }
+        return narr
+      })
+      .share()
+
   }
   onShareEvent(url) {
     window.open("https://www.facebook.com/sharer/sharer.php?u=" + url + ";src=sdkpreparse")

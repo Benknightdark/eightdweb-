@@ -18,8 +18,10 @@ export class CampuseventmanageComponent implements OnInit {
     content: "",
     websignurl: "",
     imageinfo: "",
+    enable:true,
     CreateTime: "",
     UpdateTime: "",
+
   };
   ShowEventData: Observable<any>
   constructor(private db: AngularFireDatabase) { }
