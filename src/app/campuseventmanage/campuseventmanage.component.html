@@ -1,1 +1,39 @@
+<div class="row">
+  <form class="col s12" (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <div class="row">
+      <div class="input-field col s12">
+        <input placeholder="營隊標題" id="title" type="text" class="validate" name="title" [(ngModel)]="EventData.title">
+      </div>
 
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <textarea class="materialize-textarea" placeholder="營隊內容" name="content" [(ngModel)]="EventData.content"></textarea>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12">
+        <input placeholder="線上報名網址" name="websignurl" [(ngModel)]="EventData.websignurl" type="text" class="validate">
+      </div>
+    </div>
+    <div class="row">
+      <image-upload [buttonCaption]="'上傳活動DM'" [dropBoxMessage]="'Drop Your DM'" (onFileUploadFinish)="imageUploaded($event)" (onRemove)="imageRemoved($event)"
+        (isPending)="disableSendButton($event)" [max]="1" [fileTooLargeMessage]="'圖片容量太大'"></image-upload>
+    </div>
+    <button class="btn waves-effect waves-light" type="submit" name="action">
+        Submit<i class="material-icons right">send</i>
+  </button>
+  </form>
+</div>
+
+
+<ul class="collection">
+  <li class="collection-item"></li>
+
+  <li class="collection-item" *ngFor="let item of ShowEventData |async">
+    <div>{{item?.title}}
+
+      <i class="material-icons" (click)="onRemove(item?.id)">delete</i></div>
+  </li>
+</ul>

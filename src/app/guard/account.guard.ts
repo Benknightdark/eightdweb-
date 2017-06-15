@@ -9,7 +9,7 @@ export class AccountGuard implements CanActivate {
   u;
   constructor(private router: Router, private afAuth: AngularFireAuth) {
     if (localStorage.getItem("token")) {
-      this.router.navigate(['/'])
+      this.router.navigate(['/admin/campuseventmanage'])
     }
   }
   canActivate(
