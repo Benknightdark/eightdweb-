@@ -6,26 +6,30 @@ import { AdminlayoutComponent } from './adminlayout/adminlayout.component';
 import { CampuseventComponent } from './campusevent/campusevent.component';
 import { CampuseventmanageComponent } from './campuseventmanage/campuseventmanage.component';
 import { CampusphotosmanageComponent } from './campusphotosmanage/campusphotosmanage.component';
+import { AccountGuard } from './guard/account.guard';
 
 
 const routes: Routes = [
   {
     path: '',
-    component:LayoutComponent
+    component: LayoutComponent
   },
   {
     path: 'login',
-    component:LoginComponent
+    component: LoginComponent
   },
   {
-    path:'admin',component:AdminlayoutComponent,children:[
+    path: 'admin', component: AdminlayoutComponent, children: [
       {
-        path:'campuseventmanage',component:CampuseventmanageComponent
+        path: 'campuseventmanage', component: CampuseventmanageComponent
       },
-        {
-        path:'campusphotosmanage',component:CampusphotosmanageComponent
+      {
+        path: 'campusphotosmanage', component: CampusphotosmanageComponent
       }
-    ]
+    ], canActivate: [AccountGuard]
+  },
+  {
+    path: "**", redirectTo: ""
   }
 ];
 

@@ -20,7 +20,7 @@ import { AdminlayoutComponent } from './adminlayout/adminlayout.component';
 import { CampuseventmanageComponent } from './campuseventmanage/campuseventmanage.component';
 import { CampusphotosmanageComponent } from './campusphotosmanage/campusphotosmanage.component';
 import { AccountService } from './services/account.service';
-import { AccountComponent } from './guard/account/account.component';
+import { AccountGuard } from './guard/account.guard';
 
 @NgModule({
   declarations: [
@@ -32,7 +32,7 @@ import { AccountComponent } from './guard/account/account.component';
     AdminlayoutComponent,
     CampuseventmanageComponent,
     CampusphotosmanageComponent,
-    AccountComponent,
+
 
   ],
   imports: [
@@ -46,7 +46,7 @@ import { AccountComponent } from './guard/account/account.component';
     FormsModule,
     ImageUploadModule.forRoot()
   ],
-  providers: [AccountService],
+  providers: [AccountService,AccountGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
