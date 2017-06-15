@@ -1,24 +1,27 @@
-<nav class="light-blue accent-1 " role="navigation">
-  <div class="nav-wrapper container">
-    <a id="logo-container" href="#" class="brand-logo">八德文教基金會</a>
-    <ul class="right hide-on-med-and-down">
-      <li><a href="#">首頁</a></li>
-      <li><a href="#">簡介</a></li>
-      <li><a href="#">營隊活動</a></li>
-      <li><a href="#">營隊花絮</a></li>
-      <li><a href="#">聯絡資訊</a></li>
-    </ul>
+<div class="navbar-fixed">
+  <nav class="light-blue accent-1 " role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="#" class="brand-logo">八德文教基金會</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#">首頁</a></li>
+        <li><a href="#intro">簡介</a></li>
+        <li><a href="#campusevent">營隊活動</a></li>
+        <li><a href="#campusphoto">營隊花絮</a></li>
+        <li><a href="#contact">聯絡資訊</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons"  style="color: white;">menu</i></a>
 
-    <ul id="nav-mobile" class="side-nav">
-      <li><a href="#">首頁</a></li>
-      <li><a href="#">簡介</a></li>
-      <li><a href="#">營隊活動</a></li>
-      <li><a href="#">營隊花絮</a></li>
-      <li><a href="#">聯絡資訊</a></li>
-    </ul>
-    <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons"  style="color: white;">menu</i></a>
-  </div>
-</nav>
+    </div>
+  </nav>
+</div>
+   <ul id="nav-mobile" class="side-nav">
+        <li><a href="#">首頁</a></li>
+        <li><a href="#intro">簡介</a></li>
+        <li><a href="#campusevent">營隊活動</a></li>
+        <li><a href="#campusphoto">營隊花絮</a></li>
+        <li><a href="#contact">聯絡資訊</a></li>
+      </ul>
+
 <div id="index-banner" class="parallax-container">
   <div class="section no-pad-bot">
     <div class="container">
@@ -33,7 +36,7 @@
   </div>
   <div class="parallax"><img src="assets/images/index.jpg" alt="Unsplashed background img 1"></div>
 </div>
-<div class="container">
+<div class="container" id="intro">
   <div class="section">
     <div class="row">
       <ul class="collapsible" data-collapsible="accordion">
@@ -80,7 +83,7 @@
   </div>
 </div>
 
-<div class="parallax-container valign-wrapper">
+<div class="parallax-container valign-wrapper" id="campusevent">
   <div class="section no-pad-bot">
     <div class="container">
       <div class="row center">
@@ -103,7 +106,7 @@
 <app-campusevent></app-campusevent>
 
 
-<div class="parallax-container valign-wrapper">
+<div class="parallax-container valign-wrapper" id="campusphoto">
   <div class="section no-pad-bot">
     <div class="container">
       <div class="row center">
@@ -114,7 +117,7 @@
   <div class="parallax"><img src="assets/images/background3.jpg" alt="Unsplashed background img 3"></div>
 </div>
 <app-campusphotos></app-campusphotos>
-<footer class="page-footer teal lighten-5">
+<footer class="page-footer teal lighten-5" id="contact">
   <div class="container">
     <div class="row">
       <div class="col l6 s12">
