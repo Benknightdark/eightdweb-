@@ -8,11 +8,13 @@ import 'rxjs'
   styleUrls: ['./campusevent.component.css']
 })
 export class CampuseventComponent implements OnInit {
-  ShowEventData: Observable<any>
+  ShowEventData//: Observable<any[]>
+  isShowEvent:boolean;
+  EventCount;
   constructor(private db: AngularFireDatabase) { }
 
   ngOnInit() {
-    this.ShowEventData = this.db.list("/EventData", {
+     this.db.list("/EventData", {
       query: {
         orderByChild: 'CreateTime'
       }
@@ -28,6 +30,13 @@ export class CampuseventComponent implements OnInit {
         return narr
       })
       .share()
+      .subscribe(data=>{
+        this.ShowEventData =data;
+        this.EventCount=this.ShowEventData.length;
+
+        this.isShowEvent=true;
+
+      })
 
   }
   onShareEvent(url) {
