@@ -16,7 +16,10 @@ export class AppComponent {
 
     $(document).ready(function () {
       $('.collapsible').collapsible();
-      $('.button-collapse').sideNav();
+      $('.button-collapse').sideNav({
+        closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+      draggable: true // Choose whether you can drag to open on touch screens
+      });
       $('.parallax').parallax();
         $('.carousel.carousel-slider').carousel({fullWidth: true,indicators:true});
         setInterval(function() {
