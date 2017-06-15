@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CampuseventComponent } from './campusevent/campusevent.component';
 import { CampusphotosComponent } from './campusphotos/campusphotos.component';
+import { LayoutComponent } from './layout/layout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CampuseventComponent,
-    CampusphotosComponent
+    CampusphotosComponent,
+    LayoutComponent
   ],
   imports: [
     BrowserModule,
