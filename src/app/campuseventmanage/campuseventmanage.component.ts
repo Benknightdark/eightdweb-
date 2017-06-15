@@ -18,7 +18,7 @@ export class CampuseventmanageComponent implements OnInit {
     content: "",
     websignurl: "",
     imageinfo: "",
-    imageurl: "",
+    imagepath: "",
     enable: true,
     CreateTime: "",
     UpdateTime: "",
@@ -47,7 +47,7 @@ export class CampuseventmanageComponent implements OnInit {
       const ImageName = (Date.now() + ".jpg")
       this.isFinishSubmit = !this.isFinishSubmit;
       firebase.storage().ref().child("/DM/" + ImageName).putString(this.DMImage, 'base64').then((snapshot) => {
-        this.EventData.imageurl = snapshot.metadata.fullPath;
+        this.EventData.imagepath = snapshot.metadata.fullPath;
         firebase.storage().ref().child("/DM/" + ImageName).getDownloadURL().then(a => {
           const id = UUID.UUID();
           this.EventData.id = id;
@@ -70,7 +70,7 @@ export class CampuseventmanageComponent implements OnInit {
   }
   onRemove(item) {
     // Create a reference to the file to delete
-    const desertRef = firebase.storage().ref().child(item.imageurl);
+    const desertRef = firebase.storage().ref().child(item.imagepath);
 
     // Delete the file
     desertRef.delete().then(function () {
