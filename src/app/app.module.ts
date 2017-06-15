@@ -1,3 +1,4 @@
+import {HttpModule} from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -6,7 +7,14 @@ import { AppComponent } from './app.component';
 import { CampuseventComponent } from './campusevent/campusevent.component';
 import { CampusphotosComponent } from './campusphotos/campusphotos.component';
 import { LayoutComponent } from './layout/layout.component';
+import { CommonModule } from "@angular/common";
+import { FormsModule } from '@angular/forms';
+import {ImageUploadModule} from 'angular2-image-upload';
 
+import { AngularFireModule } from 'angularfire2';
+import { environment } from '../environments/environment';
+import { AngularFireAuthModule } from "angularfire2/auth";
+import { AngularFireDatabaseModule } from "angularfire2/database";
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +24,15 @@ import { LayoutComponent } from './layout/layout.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CommonModule,
+        HttpModule,
+     AngularFireModule.initializeApp(environment.firebase),
+
+    AngularFireAuthModule,
+    AngularFireDatabaseModule,
+    FormsModule,
+     ImageUploadModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
