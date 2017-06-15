@@ -1,1 +1,12 @@
-<div class="rows"><h2>營隊花絮管理</h2></div>
+<div class="rows">
+  <h2>營隊花絮管理</h2>
+</div>
+<image-upload [buttonCaption]="'上傳活動照片(最多三種)'"
+ [dropBoxMessage]="'Drop Your DM'"
+ (onFileUploadFinish)="imageUploaded($event)"
+ (onRemove)="imageRemoved($event)"
+  (isPending)="disableSendButton($event)"
+  [max]="3"
+  [fileTooLargeMessage]="'圖片容量太大'">
+  </image-upload>
+<button (click)="uploadtask()">上傳</button>
