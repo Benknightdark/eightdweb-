@@ -4,6 +4,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 import * as firebase from 'firebase/app';
 import { AccountService } from '../services/account.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ import { AccountService } from '../services/account.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private  afAuth: AngularFireAuth,private db: AngularFireDatabase ,private account:AccountService) {
+  constructor(private  afAuth: AngularFireAuth,private db: AngularFireDatabase ,private account:AccountService,private router:Router) {
   }
 
   // tslint:disable-next-line:member-ordering
@@ -23,7 +24,9 @@ export class LoginComponent implements OnInit {
   password = "";
 
   ngOnInit() {
-
+ if (localStorage.getItem("token")) {
+      this.router.navigate(['/admin/campuseventmanage'])
+    }
 
   }
 

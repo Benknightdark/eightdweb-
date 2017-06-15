@@ -9,12 +9,12 @@ import 'rxjs'
 })
 export class CampuseventComponent implements OnInit {
   ShowEventData//: Observable<any[]>
-  isShowEvent:boolean;
+  isShowEvent: boolean;
   //EventCount;
   constructor(private db: AngularFireDatabase) { }
 
   ngOnInit() {
-     this.db.list("/EventData", {
+    this.db.list("/EventData", {
       query: {
         orderByChild: 'CreateTime'
       }
@@ -30,11 +30,10 @@ export class CampuseventComponent implements OnInit {
         return narr
       })
       .share()
-      .subscribe(data=>{
-        this.ShowEventData =data;
-       // this.EventCount=this.ShowEventData.length;
-
-        this.isShowEvent=true;
+      .subscribe(data => {
+        this.ShowEventData = data;
+        // this.EventCount=this.ShowEventData.length;
+        this.isShowEvent = true;
 
       })
 

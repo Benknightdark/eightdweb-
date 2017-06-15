@@ -8,9 +8,9 @@ import { AngularFireAuth } from 'angularfire2/auth';
 export class AccountGuard implements CanActivate {
   u;
   constructor(private router: Router, private afAuth: AngularFireAuth) {
-    if (localStorage.getItem("token")) {
-      this.router.navigate(['/admin/campuseventmanage'])
-    }
+    // if (localStorage.getItem("token")) {
+    //   this.router.navigate(['/admin/campuseventmanage'])
+    // }
   }
   canActivate(
     next: ActivatedRouteSnapshot,

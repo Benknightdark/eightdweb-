@@ -10,7 +10,7 @@ import { Observable } from 'rxjs/Observable';
 })
 export class CampuseventmanageComponent implements OnInit {
 
-  isFinishSubmit = false;
+  isFinishSubmit = true;
   DMImage;
   EventData = {
     id: "",
@@ -18,7 +18,7 @@ export class CampuseventmanageComponent implements OnInit {
     content: "",
     websignurl: "",
     imageinfo: "",
-    enable:true,
+    enable: true,
     CreateTime: "",
     UpdateTime: "",
 
@@ -31,7 +31,8 @@ export class CampuseventmanageComponent implements OnInit {
   }
   imageUploaded(data) {
     //console.log(data)
-    this.DMImage = data["src"].replace("data:image/jpeg;base64,", "")
+    this.DMImage = data["src"].replace("data:image/jpeg;base64,", "");
+    // console.log(this.DMImage)
   }
   imageRemoved(event) {
     // this.MetaFormDes.imageinfo = "";
@@ -41,22 +42,33 @@ export class CampuseventmanageComponent implements OnInit {
     //console.log(event)
   }
   onSubmit(f) {
+    if (this.DMImage != "") {
+      const ImageName = (Date.now() + ".jpg")
+      this.isFinishSubmit = !this.isFinishSubmit;
+      firebase.storage().ref().child("/DM/" + ImageName).putString(this.DMImage, 'base64').then((snapshot) => {
+        firebase.storage().ref().child("/DM/" + ImageName).getDownloadURL().then(a => {
+          const id = UUID.UUID();
+          this.EventData.id = id;
+          this.EventData.imageinfo = a;
+          this.EventData.CreateTime = Date.now().toString();
+          this.EventData.UpdateTime = Date.now().toString();
+          //console.log(this.EventData);
 
-    const ImageName = (Date.now() + ".jpg")
-    this.isFinishSubmit = !this.isFinishSubmit;
-    firebase.storage().ref().child("/DM/" + ImageName).putString(this.DMImage, 'base64').then((snapshot) => {
-      firebase.storage().ref().child("/DM/" + ImageName).getDownloadURL().then(a => {
-        const id = UUID.UUID();
-        this.EventData.id = id;
-        this.EventData.imageinfo = a;
-        this.EventData.CreateTime = Date.now().toString();
-        this.EventData.UpdateTime = Date.now().toString();
-        //console.log(this.EventData);
-        this.isFinishSubmit = !this.isFinishSubmit;
-        this.db.object('/EventData/' + this.EventData.id).set(this.EventData)
-          .then(a => confirm("成功建立新營隊訊息")).catch(e => console.log(e))
-      }).catch((e) => { console.log(e) });
-    }).catch((e) => { console.log(e) });
+          this.db.object('/EventData/' + this.EventData.id).set(this.EventData)
+            .then(a => {
+              confirm("成功建立新營隊訊息")
+              this.isFinishSubmit = !this.isFinishSubmit;
+            }
+
+
+            ).catch(e => { console.log(e); confirm(e.message) })
+        }).catch((e) => { console.log(e); confirm(e.message) });
+      }).catch((e) => { console.log(e); confirm(e.message) });
+
+    } else {
+      confirm("沒有上傳圖片")
+    }
+
   }
   onRemove(id) {
     this.db.object('/EventData/' + id).remove();
