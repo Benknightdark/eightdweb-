@@ -12,9 +12,14 @@ export class AppComponent {
   // tslint:disable-next-line:use-life-cycle-interface
   ngOnInit() {
 
-    $('.button-collapse').sideNav();
-    $('.parallax').parallax();
-    $('.tlt').textillate({// the default selector to use when detecting multiple texts to animate
+
+
+    $(document).ready(function () {
+      $('.collapsible').collapsible();
+      $('.button-collapse').sideNav();
+      $('.parallax').parallax();
+        $('.carousel.carousel-slider').carousel({fullWidth: true});
+      $('.tlt').textillate({// the default selector to use when detecting multiple texts to animate
       selector: '.texts',
 
       // enable looping
@@ -81,6 +86,8 @@ export class AppComponent {
       // set the type of token to animate (available types: 'char' and 'word')
       type: 'char'
     });
+    });
+
 
   }
 }
