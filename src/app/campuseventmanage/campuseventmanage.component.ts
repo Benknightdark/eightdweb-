@@ -56,7 +56,7 @@ export class CampuseventmanageComponent implements OnInit {
           this.EventData.CreateTime = Date.now().toString();
           this.EventData.UpdateTime = Date.now().toString();
           this.db.object('/EventData/' + this.EventData.id).set(this.EventData)
-            .then(a => {
+            .then(af => {
               confirm("成功建立新營隊訊息")
               this.isFinishSubmit = !this.isFinishSubmit;
             }
