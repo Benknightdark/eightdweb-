@@ -16,7 +16,7 @@ export class CampuseventComponent implements OnInit {
       query: {
         orderByChild: 'CreateTime',
       }
-    }).map((arr) => arr.reverse());
+    }).map((arr) => arr.reverse()).share();
   }
   onShareEvent(url) {
     window.open("https://www.facebook.com/sharer/sharer.php?u=" + url + ";src=sdkpreparse")

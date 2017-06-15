@@ -1,32 +1,59 @@
-  <div class="container">
-    <div class="section">
-      <div class="row">
-        <div class="col s12 center">
-          <div class="card">
+<div class="container">
+  <div class="section">
+    <div class="row">
+      <div class="col s12 center">
+        <div *ngIf="ShowEventData elseblock ">
+
+          <div class="card" *ngFor="let item of ShowEventData |async ">
             <div class="card-image waves-effect waves-block waves-light">
               <img class="activator" src="assets/campusdm/1.jpg">
             </div>
-
             <div class="card-content">
-              <span class="card-title activator grey-text text-darken-4">2017夏令營 古早味彈珠台<i class="material-icons right">more_vert</i></span>
-
+              <span class="card-title activator grey-text text-darken-4">{{item?.title}}<i class="material-icons right">more_vert</i></span>
             </div>
             <div class="card-reveal">
-              <span class="card-title grey-text text-darken-4">2017夏令營 古早味彈珠台<i class="material-icons right">close</i></span>
-              <p>小小工匠師集合~~~ 親手打造『古早味彈珠台』， 從「想」到「做」 讓孩子學會思考、學會分享、學會動手做🤛 僅此ㄧ梯，物超所值，把握限定的名額 費用：600元 /組親子 (含材料費&餐費)</p>
+              <span class="card-title grey-text text-darken-4">{{item?.title}}<i class="material-icons right">close</i></span>
+              <div [innerText]="item?.content"></div>
             </div>
             <div class="card-action">
-              <button class="btn waves-effect waves-light" type="submit" name="action">報名活動
+              <button class="btn waves-effect waves-light" type="submit" name="action" (click)="onSignUpEvent(item?.websignurl)">報名活動
               <i class="material-icons right">send</i>
             </button>
-              <button class="btn waves-effect waves-light" type="submit" name="action">分享活動
+              <button class="btn waves-effect waves-light" type="submit" name="action" (click)="onShareEvent(item?.websignurl)">分享活動
               <i class="material-icons right">share</i>
             </button>
             </div>
           </div>
-
+        </div>
+        <div #elseblock>
+           <div class="card">
+            <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4">營隊活動即將舉辦</span>
+            </div>
+          </div>
         </div>
       </div>
-
     </div>
   </div>
+</div>
+
+<!--<div class="card">
+          <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator" src="assets/campusdm/1.jpg">
+          </div>
+          <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4">2017夏令營 古早味彈珠台<i class="material-icons right">more_vert</i></span>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4">2017夏令營 古早味彈珠台<i class="material-icons right">close</i></span>
+            <p>小小工匠師集合~~~ 親手打造『古早味彈珠台』， 從「想」到「做」 讓孩子學會思考、學會分享、學會動手做🤛 僅此ㄧ梯，物超所值，把握限定的名額 費用：600元 /組親子 (含材料費&餐費)</p>
+          </div>
+          <div class="card-action">
+            <button class="btn waves-effect waves-light" type="submit" name="action">報名活動
+              <i class="material-icons right">send</i>
+            </button>
+            <button class="btn waves-effect waves-light" type="submit" name="action">分享活動
+              <i class="material-icons right">share</i>
+            </button>
+          </div>
+        </div>-->
