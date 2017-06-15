@@ -10,7 +10,7 @@ import 'rxjs'
 export class CampuseventComponent implements OnInit {
   ShowEventData//: Observable<any[]>
   isShowEvent:boolean;
-  EventCount;
+  //EventCount;
   constructor(private db: AngularFireDatabase) { }
 
   ngOnInit() {
@@ -32,7 +32,7 @@ export class CampuseventComponent implements OnInit {
       .share()
       .subscribe(data=>{
         this.ShowEventData =data;
-        this.EventCount=this.ShowEventData.length;
+       // this.EventCount=this.ShowEventData.length;
 
         this.isShowEvent=true;
 
