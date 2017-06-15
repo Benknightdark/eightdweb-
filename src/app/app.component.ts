@@ -18,7 +18,10 @@ export class AppComponent {
       $('.collapsible').collapsible();
       $('.button-collapse').sideNav();
       $('.parallax').parallax();
-        $('.carousel.carousel-slider').carousel({fullWidth: true});
+        $('.carousel.carousel-slider').carousel({fullWidth: true,indicators:true});
+        setInterval(function() {
+    $('.carousel').carousel('next');
+  }, 2000); // every 2 seconds
       $('.tlt').textillate({// the default selector to use when detecting multiple texts to animate
       selector: '.texts',
 
