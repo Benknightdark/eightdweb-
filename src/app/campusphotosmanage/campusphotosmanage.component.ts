@@ -17,30 +17,47 @@ export class CampusphotosmanageComponent implements OnInit {
     CreateTime: "",
     UpdateTime: ""
   }
-  ImageArray= []
+  ImageArray = []
   isFinishSubmit: boolean = true;
+  uploadcount = 0
   constructor(private db: AngularFireDatabase) { }
 
   ngOnInit() {
   }
   onSubmit(f) {
     if (this.ImageArray.length != 0) {
+      this.uploadcount = 0;
+      this.isFinishSubmit = !this.isFinishSubmit;
       //console.log(f)
 
       this.CampusEventPhotos.id = UUID.UUID();
-
-
       this.CampusEventPhotos.CreateTime = Date.now().toString();
       this.CampusEventPhotos.UpdateTime = Date.now().toString();
       console.log(this.CampusEventPhotos)
 
+
+
       for (let i = 0; i < this.ImageArray.length; i++) {
         firebase.storage().ref().child("/" + this.CampusEventPhotos.id + "/" + i + ".jpg")
-        .putString(this.ImageArray[i], 'base64').then((snapshot) => {
-          console.log(snapshot)
-        })
+          .putString(this.ImageArray[i], 'base64').then((snapshot) => {
+            console.log(snapshot.metadata.fullPath)
+            this.CampusEventPhotos.ImageUrlArray.push(snapshot.metadata.fullPath);
+            console.log(this.CampusEventPhotos.ImageUrlArray)
+            console.log(i)
+            if (this.uploadcount == 2) {
+              this.db.object('/CampusPhotos/' + this.CampusEventPhotos.id).set(this.CampusEventPhotos)
+                .then(af => {
+                  confirm("成功建立新營隊花絮")
+                  //  console.log(af)
+                  this.isFinishSubmit = !this.isFinishSubmit;
+                }
+                ).catch(e => { console.log(e) })
+            }
+            this.uploadcount = this.uploadcount + 1
+          }).catch(error => console.log(error))
 
       }
+
 
     } else {
       confirm("沒有上傳圖片")
