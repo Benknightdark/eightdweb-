@@ -9,16 +9,24 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./campusphotosmanage.component.css']
 })
 export class CampusphotosmanageComponent implements OnInit {
-
-  constructor() { }
+  CampusEventPhotos = {
+    id: '',
+    Name: '',
+    ImageArray: [],
+    GallaryUrl:"",
+    CreateTime:"",
+    UpdateTime:""
+  }
   ImageArray = [];
+  constructor() { }
+
   ngOnInit() {
   }
-  uploadtask(){
-    for(let i=0;i<this.ImageArray.length;i++){
-    firebase.storage().ref().child("/test/" + i+".jpg").putString(this.ImageArray[i], 'base64').then((snapshot) => {
-      console.log(snapshot)
-    })
+  uploadtask() {
+    for (let i = 0; i < this.ImageArray.length; i++) {
+      firebase.storage().ref().child("/test/" + i + ".jpg").putString(this.ImageArray[i], 'base64').then((snapshot) => {
+        console.log(snapshot)
+      })
 
     }
 
