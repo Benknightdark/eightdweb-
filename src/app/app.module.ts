@@ -1,3 +1,4 @@
+
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -22,6 +23,8 @@ import { CampusphotosmanageComponent } from './campusphotosmanage/campusphotosma
 import { AccountService } from './services/account.service';
 import { AccountGuard } from './guard/account.guard';
 
+  import {CarouselModule} from 'angular2-carousel-ztw/carousel.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +47,9 @@ import { AccountGuard } from './guard/account.guard';
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     FormsModule,
-    ImageUploadModule.forRoot()
+    ImageUploadModule.forRoot(),
+    CarouselModule,
+    BrowserAnimationsModule
   ],
   providers: [AccountService,AccountGuard],
   bootstrap: [AppComponent]
