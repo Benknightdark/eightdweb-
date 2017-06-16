@@ -18,6 +18,9 @@ export class LayoutComponent implements OnInit {
       });
       $('.parallax').parallax();
 
+      $('.slider').slider();
+
+
       // setTimeout(() => {
       //   $('.carousel.carousel-slider').carousel({ fullWidth: true, indicators: true });
       //   setInterval(function () {

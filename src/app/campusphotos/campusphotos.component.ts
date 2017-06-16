@@ -12,7 +12,6 @@ export class CampusphotosComponent implements OnInit {
   zone: any;
   showphotos: boolean = false;
   CampusPhotos
-  test = ["https://firebasestorage.googleapis.com/v0/b/eightdweb.appspot.com/o/f511cfb2-f9a3-f758-35b0-eb4e1ea2904e%2F1.jpg?alt=media&token=c327ceb3-1b7f-4dd2-ad80-c633636e6f4f"]
   constructor(private db: AngularFireDatabase, private ngZone: NgZone) { }
 
   ngOnInit() {
@@ -23,7 +22,8 @@ export class CampusphotosComponent implements OnInit {
         this.CampusPhotos = data;
         this.showphotos = true;
         this.ngZone.onMicrotaskEmpty.first().subscribe(() => {
-          $('.carousel.carousel-slider').carousel({ fullWidth: true, indicators: true });
+          $('.carousel.carousel-slider').carousel({ fullWidth:true, indicators: true });
+           $('.materialboxed').materialbox();
           // setInterval(function () {
           //   $('.carousel.carousel-slider').carousel('next');
           // }, 5000); // every 2 seconds

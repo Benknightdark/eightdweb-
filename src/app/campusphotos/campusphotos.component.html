@@ -4,6 +4,10 @@
       <div *ngIf="showphotos">
         <div class="col s12 center">
           <div class="carousel carousel-slider center">
+                 <div *ngFor="let img of cp.ImageUrlArray;let i=index">
+              <a class="carousel-item">
+              <img class="materialboxed" width="650"[src]="img"></a>
+            </div>
             <div class="carousel-fixed-item center">
               <h2 class="white-text">{{cp?.Name}}</h2>
               <br>
@@ -16,10 +20,7 @@
               <i class="material-icons right">share</i>
               </button>
             </div>
-            <div *ngFor="let img of cp.ImageUrlArray;let i=index">
-              <a class="carousel-item">
-              <img [src]="img"></a>
-            </div>
+
           </div>
         </div>
       </div>
