@@ -10,13 +10,14 @@ export class LayoutComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    $(document).ready(function () {
       $('.collapsible').collapsible();
       $('.button-collapse').sideNav({
         closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
         draggable: true // Choose whether you can drag to open on touch screens
       });
       $('.parallax').parallax();
-      $('.carousel.carousel-slider').carousel({ fullWidth: true, indicators: true });
+ $('.carousel').carousel();
       setInterval(function () {
         $('.carousel').carousel('next');
       }, 2000); // every 2 seconds
@@ -87,6 +88,8 @@ export class LayoutComponent implements OnInit {
         // set the type of token to animate (available types: 'char' and 'word')
         type: 'char'
       });
+    });
+
   }
 
 }

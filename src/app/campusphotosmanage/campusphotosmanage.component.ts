@@ -34,10 +34,7 @@ export class CampusphotosmanageComponent implements OnInit {
       for (let i = 0; i < this.ImageArray.length; i++) {
         firebase.storage().ref().child("/" + this.CampusEventPhotos.id + "/" + i + ".jpg")
           .putString(this.ImageArray[i], 'base64').then((snapshot) => {
-            console.log(snapshot.metadata.fullPath)
-            this.CampusEventPhotos.ImageUrlArray.push(snapshot.metadata.fullPath);
-            console.log(this.CampusEventPhotos.ImageUrlArray)
-            console.log(i)
+            this.CampusEventPhotos.ImageUrlArray.push(snapshot.metadata.downloadURLs[0]);
             if (this.uploadcount == 2) {
               this.db.object('/CampusPhotos/' + this.CampusEventPhotos.id).set(this.CampusEventPhotos)
                 .then(af => {
