@@ -5,12 +5,12 @@
   <form class="col s12" (ngSubmit)="onSubmit(f)" #f="ngForm">
     <div class="row">
       <div class="input-field col s12">
-        <input placeholder="營隊標題" id="title" type="text" class="validate" name="title" [(ngModel)]="EventData.title" required>
+        <input placeholder="營隊標題" id="title" type="text" class="validate" name="title" [(ngModel)]="CampusEventPhotos['Name']" required>
       </div>
     </div>
     <div class="row">
       <div class="input-field col s12">
-        <textarea class="materialize-textarea" placeholder="營隊內容" name="content" [(ngModel)]="EventData.content" required></textarea>
+        <textarea class="materialize-textarea" placeholder="營隊內容" name="content" [(ngModel)]="CampusEventPhotos['GallaryUrl']" required></textarea>
       </div>
     </div>
 

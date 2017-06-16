@@ -17,14 +17,17 @@ export class CampusphotosmanageComponent implements OnInit {
     CreateTime:"",
     UpdateTime:""
   }
-  ImageArray = [];
+  isFinishSubmit:boolean;
   constructor() { }
 
   ngOnInit() {
   }
+  onSubmit(f){
+
+  }
   uploadtask() {
-    for (let i = 0; i < this.ImageArray.length; i++) {
-      firebase.storage().ref().child("/test/" + i + ".jpg").putString(this.ImageArray[i], 'base64').then((snapshot) => {
+    for (let i = 0; i < this.CampusEventPhotos.ImageArray.length; i++) {
+      firebase.storage().ref().child("/test/" + i + ".jpg").putString(this.CampusEventPhotos.ImageArray[i], 'base64').then((snapshot) => {
         console.log(snapshot)
       })
 
@@ -33,8 +36,8 @@ export class CampusphotosmanageComponent implements OnInit {
   }
   imageUploaded(data) {
     //console.log(data)
-    this.ImageArray.push(data["src"].replace("data:image/jpeg;base64,", ""));
-    console.log(this.ImageArray)
+    this.CampusEventPhotos.ImageArray.push(data["src"].replace("data:image/jpeg;base64,", ""));
+    console.log(this.CampusEventPhotos.ImageArray)
     // console.log(this.DMImage)
   }
   imageRemoved(event) {
