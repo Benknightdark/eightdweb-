@@ -19,12 +19,11 @@ export class LayoutComponent implements OnInit {
     $('.parallax').parallax();
 
     setTimeout(() => {
-      $('.carousel.carousel-slider').carousel({fullWidth: true,indicators:true});
+      $('.carousel.carousel-slider').carousel({ fullWidth: true, indicators: true });
       setInterval(function () {
         $('.carousel.carousel-slider').carousel('next');
-      }, 2000); // every 2 seconds
-console.log("exec")
-    }, 1000);
+      }, 5000); // every 2 seconds
+    }, 0);
     $('.tlt').textillate({// the default selector to use when detecting multiple texts to animate
       selector: '.texts',
 

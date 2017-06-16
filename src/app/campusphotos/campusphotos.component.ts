@@ -31,6 +31,11 @@ export class CampusphotosComponent implements OnInit {
 
 
   }
+
+  ngAfterViewInit(){
+   /// this.childrenDetector = Observable.merge(this.children.changes, this.anotherChildren.changes)
+
+  }
   // tslint:disable-next-line:use-life-cycle-interface
 
   onShareGallary(url) {
