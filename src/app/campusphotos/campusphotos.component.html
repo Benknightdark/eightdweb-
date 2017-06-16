@@ -1,25 +1,21 @@
 <div class="container">
   <div class="section">
-    <div class="row">
+    <div class="row" *ngFor="let cp of CampusPhotos">
       <div *ngIf="showphotos">
-        <div class="col s12 center" *ngFor="let cp of CampusPhotos">
-          <div class="card">
-            <div class="card-content">
-              <div class="carousel carousel-slider">
-                <div *ngFor="let img of cp.ImageUrlArray;let i=index">
-                  <a class="carousel-item">
-              <img [src]="img"></a>
-                </div>
-              </div>
+        <div class="col s12 center">
+          <div class="carousel carousel-slider center" data-indicators="true">
+            <div class="carousel-fixed-item center">
               <span class="card-title activator grey-text text-darken-4">{{cp?.Name}}</span>
-            </div>
-            <div class="card-action">
               <button class="btn waves-effect waves-light" type="button" name="action" (click)="onGotoGallary(cp.GallaryUrl)">前往相簿
               <i class="material-icons right">send</i>
-            </button>
+              </button>
               <button class="btn waves-effect waves-light" type="button" name="action" (click)="onShareGallary(cp.GallaryUrl)">分享相簿
               <i class="material-icons right">share</i>
-            </button>
+              </button>
+            </div>
+            <div *ngFor="let img of cp.ImageUrlArray;let i=index">
+              <a class="carousel-item">
+              <img [src]="img"></a>
             </div>
           </div>
         </div>
@@ -27,4 +23,3 @@
     </div>
   </div>
 </div>
-
