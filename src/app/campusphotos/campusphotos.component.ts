@@ -24,9 +24,9 @@ export class CampusphotosComponent implements OnInit {
         this.showphotos = true;
         this.ngZone.onMicrotaskEmpty.first().subscribe(() => {
           $('.carousel.carousel-slider').carousel({ fullWidth: true, indicators: true });
-          setInterval(function () {
-            $('.carousel.carousel-slider').carousel('next');
-          }, 5000); // every 2 seconds
+          // setInterval(function () {
+          //   $('.carousel.carousel-slider').carousel('next');
+          // }, 5000); // every 2 seconds
         });
 
       })

@@ -22,8 +22,6 @@ import { CampuseventmanageComponent } from './campuseventmanage/campuseventmanag
 import { CampusphotosmanageComponent } from './campusphotosmanage/campusphotosmanage.component';
 import { AccountService } from './services/account.service';
 import { AccountGuard } from './guard/account.guard';
-
-  import {CarouselModule} from 'angular2-carousel-ztw/carousel.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
@@ -48,7 +46,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AngularFireDatabaseModule,
     FormsModule,
     ImageUploadModule.forRoot(),
-    CarouselModule,
     BrowserAnimationsModule
   ],
   providers: [AccountService,AccountGuard],
