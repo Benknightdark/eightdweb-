@@ -13,16 +13,16 @@ export class CampusphotosmanageComponent implements OnInit {
     id: '',
     Name: '',
     ImageArray: [],
-    GallaryUrl:"",
-    CreateTime:"",
-    UpdateTime:""
+    GallaryUrl: "",
+    CreateTime: "",
+    UpdateTime: ""
   }
-  isFinishSubmit:boolean;
+  isFinishSubmit: boolean;
   constructor() { }
 
   ngOnInit() {
   }
-  onSubmit(f){
+  onSubmit(f) {
 
   }
   uploadtask() {

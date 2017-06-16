@@ -5,23 +5,21 @@
   <form class="col s12" (ngSubmit)="onSubmit(f)" #f="ngForm">
     <div class="row">
       <div class="input-field col s12">
-        <input placeholder="營隊標題" id="title" type="text" class="validate" name="title" [(ngModel)]="CampusEventPhotos['Name']" required>
-      </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s12">
-        <textarea class="materialize-textarea" placeholder="營隊內容" name="content" [(ngModel)]="CampusEventPhotos['GallaryUrl']" required></textarea>
+        <input placeholder="營隊花絮名稱" id="title" type="text" class="validate" name="title" [(ngModel)]="CampusEventPhotos['Name']" required>
       </div>
     </div>
 
     <div class="row">
       <div class="input-field col s12">
-        <input placeholder="線上報名網址" name="websignurl" [(ngModel)]="EventData.websignurl" type="text" class="validate" required>
+        <input placeholder="完整營隊花絮網址" name="websignurl" [(ngModel)]="CampusEventPhotos['GallaryUrl']" type="text" class="validate"
+          required>
       </div>
     </div>
     <div class="row">
-      <image-upload [buttonCaption]="'上傳活動DM'" [dropBoxMessage]="'Drop Your DM'" (onFileUploadFinish)="imageUploaded($event)" (onRemove)="imageRemoved($event)"
-        (isPending)="disableSendButton($event)" [max]="1" [fileTooLargeMessage]="'圖片容量太大'"></image-upload>
+
+      <image-upload [buttonCaption]="'上傳活動照片(最多三種)'" [dropBoxMessage]="'Drop Your DM'" (onFileUploadFinish)="imageUploaded($event)"
+        (onRemove)="imageRemoved($event)" (isPending)="disableSendButton($event)" [max]="3" [fileTooLargeMessage]="'圖片容量太大'">
+      </image-upload>
     </div>
     <div *ngIf="isFinishSubmit ;else elseblock">
       <button class="btn waves-effect waves-light" type="submit" name="action" [disabled]="f['invalid']">
@@ -39,14 +37,6 @@
 
 </div>
 
-<image-upload [buttonCaption]="'上傳活動照片(最多三種)'"
- [dropBoxMessage]="'Drop Your DM'"
- (onFileUploadFinish)="imageUploaded($event)"
- (onRemove)="imageRemoved($event)"
-  (isPending)="disableSendButton($event)"
-  [max]="3"
-  [fileTooLargeMessage]="'圖片容量太大'">
-  </image-upload>
-  <button class="btn waves-effect waves-light" type="submit" name="action" (click)="uploadtask()">上傳
+<button class="btn waves-effect waves-light" type="submit" name="action" (click)="uploadtask()">上傳
     <i class="material-icons left">file_upload</i>
   </button>
