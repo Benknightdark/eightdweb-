@@ -15,7 +15,7 @@ export class AdminlayoutComponent implements OnInit {
   ngOnInit() {
     $('.collapsible').collapsible();
     $('.button-collapse').sideNav({
-      closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+      closeOnClick: false , // Closes side-nav on <a> clicks, useful for Angular/Meteor
       draggable: true // Choose whether you can drag to open on touch screens
     });
 
@@ -24,8 +24,10 @@ export class AdminlayoutComponent implements OnInit {
         return document.documentElement.clientWidth;
       })
       .subscribe(data => {
+             //   console.log(data)
+
         this.ScreenWidth = data
-        this.isCloseOnClick();
+       // this.isCloseOnClick(data);
       });
 
     Observable.fromEvent(window, 'load')
@@ -33,24 +35,34 @@ export class AdminlayoutComponent implements OnInit {
         return document.documentElement.clientWidth;
       })
       .subscribe(data => {
+     //   console.log(data)
         this.ScreenWidth = data
-        this.isCloseOnClick();
+      // this.isCloseOnClick(data);
+
+
       });
   }
 
-  isCloseOnClick() {
-    if (this.ScreenWidth < 992) {
+  isCloseOnClick(data) {
+     //$('.button-collapse').sideNav('destroy');
+         $('.collapsible').collapsible();
+    console.log(data)
+    if (data < 992) {
+      console.log("work<")
       $('.button-collapse').sideNav({
         closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
         draggable: true // Choose whether you can drag to open on touch screens
       });
     } else {
+          console.log("work>")
+
       $('.button-collapse').sideNav({
         closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
         draggable: true // Choose whether you can drag to open on touch screens
       });
     }
   }
+
   onClick() {
     this.account.Logout()
   }
