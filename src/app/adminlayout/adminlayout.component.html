@@ -1,18 +1,33 @@
-<nav class="light-blue" role="navigation">
-  <div class="nav-wrapper container">
-    <a id="logo-container" href="#" class="brand-logo">AdminPlatform</a>
-    <ul class="right hide-on-med-and-down">
+<header>
+  <nav class="top-nav light-blue" role="navigation">
+    <div class="container">
+      <div class="nav-wrapper">
+      <a class="page-title">AdminPlatform</a>
+
+      <a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only"><i class="material-icons" style="color: white;">menu</i></a>
+    </div>
+    </div>
+
+  </nav>
+
+</header>
+
+
+    <ul id="nav-mobile" class="side-nav fixed" style="overflow: auto; transform: translateX(0%);">
       <li><a [routerLink]="['/admin/campuseventmanage']">營隊活動管理</a></li>
       <li><a [routerLink]="['/admin/campusphotosmanage']">營隊花絮管理</a></li>
       <li><button type="button" class="waves-effect waves-light btn" (click)="onClick()">登出</button></li>
     </ul>
 
-    <ul id="nav-mobile" class="side-nav">
-        <li><a [routerLink]="['/admin/campuseventmanage']">營隊活動管理</a></li>
+<main>
+   <div class="container" style="">
+        <router-outlet> </router-outlet>
+      </div>
+</main>
+
+
+<!--<ul class="side-nav">
+      <li><a [routerLink]="['/admin/campuseventmanage']">營隊活動管理</a></li>
       <li><a [routerLink]="['/admin/campusphotosmanage']">營隊花絮管理</a></li>
       <li><button type="button" class="waves-effect waves-light btn" (click)="onClick()">登出</button></li>
-    </ul>
-    <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons" style="color: white;">menu</i></a>
-  </div>
-</nav>
-<router-outlet> </router-outlet>
+    </ul>-->
