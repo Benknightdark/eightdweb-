@@ -27,13 +27,6 @@ export class CampusphotosComponent implements OnInit {
       })
 
 
-    setTimeout(() => {
-      $('.carousel').carousel();
-      setInterval(function () {
-        $('.carousel').carousel('next');
-      }, 2000); // every 2 seconds
-      console.log("fasdfadf")
-    }, 1000);
 
 
 

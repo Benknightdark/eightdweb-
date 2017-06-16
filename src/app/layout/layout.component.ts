@@ -17,10 +17,14 @@ export class LayoutComponent implements OnInit {
         draggable: true // Choose whether you can drag to open on touch screens
       });
       $('.parallax').parallax();
- $('.carousel').carousel();
+
+    setTimeout(() => {
+      $('.carousel').carousel();
       setInterval(function () {
         $('.carousel').carousel('next');
       }, 2000); // every 2 seconds
+
+    }, 2000);
       $('.tlt').textillate({// the default selector to use when detecting multiple texts to animate
         selector: '.texts',
 
