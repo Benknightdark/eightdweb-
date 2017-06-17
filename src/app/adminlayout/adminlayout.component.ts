@@ -13,11 +13,12 @@ export class AdminlayoutComponent implements OnInit {
   constructor(private account: AccountService, private router: Router) { }
 
   ngOnInit() {
-
+//const clinetwidth=document.documentElement.clientWidth;
+ this.ScreenWidth = document.documentElement.clientWidth;
     $('.collapsible').collapsible();
     $('.button-collapse').sideNav({
-      closeOnClick: false , // Closes side-nav on <a> clicks, useful for Angular/Meteor
-      draggable: true // Choose whether you can drag to open on touch screens
+      closeOnClick: false ,
+      draggable: true
     });
 
     Observable.fromEvent(window, 'resize')
