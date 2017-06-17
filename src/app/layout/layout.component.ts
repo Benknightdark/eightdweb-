@@ -21,6 +21,7 @@ export class LayoutComponent implements OnInit {
       $('.slider').slider({
         height:"100%",
         indicators:false
+
       });
 
 

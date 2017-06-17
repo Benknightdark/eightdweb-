@@ -6,7 +6,7 @@
           <div class="carousel carousel-slider center">
                  <div *ngFor="let img of cp.ImageUrlArray;let i=index">
               <a class="carousel-item">
-              <img class="materialboxed" width="650"[src]="img"></a>
+              <img [src]="img" style="width:630px ; height:400px"></a>
             </div>
             <div class="carousel-fixed-item center">
               <h2 class="white-text">{{cp?.Name}}</h2>
