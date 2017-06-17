@@ -13,6 +13,7 @@ export class AdminlayoutComponent implements OnInit {
   constructor(private account: AccountService, private router: Router) { }
 
   ngOnInit() {
+
     $('.collapsible').collapsible();
     $('.button-collapse').sideNav({
       closeOnClick: false , // Closes side-nav on <a> clicks, useful for Angular/Meteor
