@@ -19,7 +19,7 @@ export class LayoutComponent implements OnInit {
       $('.parallax').parallax();
 
       $('.slider').slider({
-        height:800,
+        height:"100%",
         indicators:false
       });
 
