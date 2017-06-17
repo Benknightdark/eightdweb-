@@ -18,7 +18,10 @@ export class LayoutComponent implements OnInit {
       });
       $('.parallax').parallax();
 
-      $('.slider').slider();
+      $('.slider').slider({
+        height:800,
+        indicators:false
+      });
 
 
       // setTimeout(() => {
