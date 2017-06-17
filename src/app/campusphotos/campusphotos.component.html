@@ -7,23 +7,13 @@
           <div class="carousel carousel-slider center">
             <div *ngFor="let img of cp.ImageUrlArray;let i=index">
               <a class="carousel-item">
-              <img [src]="img" style="width:1000px ; height:600px"></a>
+              <img [src]="img" style="width:1000px ; height:300px"></a>
             </div>
             <div class="carousel-fixed-item center">
               <h2 class="white-text">{{cp?.Name}}</h2>
               <br>
               <br>
             </div>
-            <!--  <div class="carousel-fixed-item center">
-
-              <a class="waves-effect waves-light btn-large" (click)="onGotoGallary(cp.GallaryUrl)">前往相簿
-              <i class="material-icons right">send</i>
-              </a>
-              <a class="waves-effect waves-light btn-large" (click)="onShareGallary(cp.GallaryUrl)">分享相簿
-              <i class="material-icons right">share</i>
-              </a>
-            </div>-->
-
           </div>
           <div class="section">
             <a class="waves-effect waves-light btn" (click)="onGotoGallary(cp.GallaryUrl)">前往相簿

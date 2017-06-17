@@ -13,7 +13,6 @@ export class AdminlayoutComponent implements OnInit {
   constructor(private account: AccountService, private router: Router) { }
 
   ngOnInit() {
-//const clinetwidth=document.documentElement.clientWidth;
  this.ScreenWidth = document.documentElement.clientWidth;
     $('.collapsible').collapsible();
     $('.button-collapse').sideNav({

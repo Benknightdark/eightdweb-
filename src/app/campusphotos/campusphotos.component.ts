@@ -16,36 +16,31 @@ export class CampusphotosComponent implements OnInit {
 
   ngOnInit() {
 
-    this.db.list("/CampusPhotos",{
+    this.db.list("/CampusPhotos", {
       query: {
         orderByChild: 'CreateTime'
       }
     }).map((arr) => {
-        const narr = []
-        arr = arr.reverse()
-        for (let i = 0; i < arr.length; i++) {
-         // if (arr[i].enable === true) {
-            narr.push(arr[i])
+      const narr = []
+      arr = arr.reverse()
+      for (let i = 0; i < arr.length; i++) {
+        // if (arr[i].enable === true) {
+        narr.push(arr[i])
         //  }
-        }
-        return narr
-      }).share()
+      }
+      return narr
+    }).share()
       .subscribe(data => {
         this.CampusPhotos = data;
         this.showphotos = true;
         this.ngZone.onMicrotaskEmpty.first().subscribe(() => {
-          $('.carousel.carousel-slider').carousel({ fullWidth:true, indicators: true });
+          $('.carousel.carousel-slider').carousel({ fullWidth: true, indicators: true });
           setInterval(function () {
             $('.carousel.carousel-slider').carousel('next');
           }, 3000); // every 2 seconds
         });
 
       })
-
-
-
-
-
   }
 
   // tslint:disable-next-line:use-life-cycle-interface
