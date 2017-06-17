@@ -3,12 +3,7 @@
     <div class="row" *ngFor="let cp of CampusPhotos">
       <div *ngIf="showphotos">
         <div class="col s12 center">
-          <a class="waves-effect waves-light btn-large" (click)="onGotoGallary(cp.GallaryUrl)">前往相簿
-              <i class="material-icons right">send</i>
-              </a>
-              <a class="waves-effect waves-light btn-large" (click)="onShareGallary(cp.GallaryUrl)">分享相簿
-              <i class="material-icons right">share</i>
-              </a>
+
           <div class="carousel carousel-slider center">
             <div *ngFor="let img of cp.ImageUrlArray;let i=index">
               <a class="carousel-item">
@@ -19,7 +14,7 @@
               <br>
               <br>
             </div>
-          <!--  <div class="carousel-fixed-item center">
+            <!--  <div class="carousel-fixed-item center">
 
               <a class="waves-effect waves-light btn-large" (click)="onGotoGallary(cp.GallaryUrl)">前往相簿
               <i class="material-icons right">send</i>
@@ -30,6 +25,15 @@
             </div>-->
 
           </div>
+          <div class="section">
+            <a class="waves-effect waves-light btn" (click)="onGotoGallary(cp.GallaryUrl)">前往相簿
+              <i class="material-icons right">send</i>
+              </a>
+            <a class="waves-effect waves-light btn" (click)="onShareGallary(cp.GallaryUrl)">分享相簿
+              <i class="material-icons right">share</i>
+              </a>
+          </div>
+
         </div>
       </div>
     </div>
