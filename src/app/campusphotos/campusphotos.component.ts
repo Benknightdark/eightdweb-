@@ -11,10 +11,12 @@ import { Observable } from 'rxjs/Observable';
 export class CampusphotosComponent implements OnInit {
   zone: any;
   showphotos: boolean = false;
-  CampusPhotos
+  CampusPhotos;
+  ScreenWidth
   constructor(private db: AngularFireDatabase, private ngZone: NgZone) { }
 
   ngOnInit() {
+    this.ScreenWidth = document.documentElement.clientWidth;
 
     this.db.list("/CampusPhotos", {
       query: {
@@ -35,18 +37,24 @@ export class CampusphotosComponent implements OnInit {
         this.showphotos = true;
         this.ngZone.onMicrotaskEmpty.first().subscribe(() => {
           $('.carousel.carousel-slider').carousel({ fullWidth: true, indicators: true });
-          setInterval(function () {
-            $('.carousel.carousel-slider').carousel('next');
-          }, 3000); // every 2 seconds
         });
 
       })
+
+      Observable.fromEvent(window, 'resize')
+      .map(() => {
+        return document.documentElement.clientWidth;
+      })
+      .subscribe(data => {
+
+        this.ScreenWidth = data
+         console.log(this.ScreenWidth)
+        $('.carousel.carousel-slider').carousel({ fullWidth: true, indicators: true });
+      });
   }
 
-  // tslint:disable-next-line:use-life-cycle-interface
-
   onShareGallary(url) {
-    window.open("https://www.facebook.com/sharer/sharer.php?u=" + url + ";src=sdkpreparse")
+    window.open('https://www.facebook.com/sharer/sharer.php?u=' + url + ';src=sdkpreparse')
   }
   onGotoGallary(url) {
     window.open(url)
