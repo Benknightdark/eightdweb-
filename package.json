@@ -32,7 +32,6 @@
     "@types/jasmine": "2.5.45",
     "@types/jquery": "^2.0.46",
     "@types/node": "~6.0.60",
-
     "angular2-image-upload": "^0.6.1",
     "angular2-uuid": "^1.1.1",
     "angularfire2": "^4.0.0-rc.1",
@@ -46,7 +45,6 @@
     "karma-coverage-istanbul-reporter": "^1.2.1",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
-
     "protractor": "~5.1.2",
     "textillate": "^0.4.1",
     "ts-node": "~3.0.4",
