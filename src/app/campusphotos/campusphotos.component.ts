@@ -38,17 +38,16 @@ export class CampusphotosComponent implements OnInit {
         this.ngZone.onMicrotaskEmpty.first().subscribe(() => {
           $('.carousel.carousel-slider').carousel({ fullWidth: true, indicators: true });
         });
-
       })
 
-      Observable.fromEvent(window, 'resize')
+    Observable.fromEvent(window, 'resize')
       .map(() => {
         return document.documentElement.clientWidth;
       })
       .subscribe(data => {
 
         this.ScreenWidth = data
-         console.log(this.ScreenWidth)
+        console.log(this.ScreenWidth)
         $('.carousel.carousel-slider').carousel({ fullWidth: true, indicators: true });
       });
   }
