@@ -48,7 +48,9 @@ export class CampusphotosComponent implements OnInit {
 
         this.ScreenWidth = data
         console.log(this.ScreenWidth)
-        $('.carousel.carousel-slider').carousel({ fullWidth: true, indicators: true });
+       this.ngZone.onMicrotaskEmpty.first().subscribe(() => {
+          $('.carousel.carousel-slider').carousel({ fullWidth: true, indicators: true });
+        });
       });
   }
 
