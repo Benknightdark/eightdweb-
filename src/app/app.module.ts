@@ -23,6 +23,8 @@ import { CampusphotosmanageComponent } from './campusphotosmanage/campusphotosma
 import { AccountService } from './services/account.service';
 import { AccountGuard } from './guard/account.guard';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +48,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AngularFireDatabaseModule,
     FormsModule,
     ImageUploadModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+
   ],
   providers: [AccountService,AccountGuard],
   bootstrap: [AppComponent]

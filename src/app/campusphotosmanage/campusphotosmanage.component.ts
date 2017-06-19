@@ -20,9 +20,17 @@ export class CampusphotosmanageComponent implements OnInit {
   ImageArray = []
   isFinishSubmit: boolean = true;
   uploadcount = 0
+columns
+ShowPhotoData
   constructor(private db: AngularFireDatabase) { }
-
   ngOnInit() {
+    this.columns = [
+        { prop: 'id' },
+        { prop: 'Name' },
+        { prop: 'CreateTime' },
+        { prop: 'UpdateTime' },
+      ];
+       this.ShowPhotoData = this.db.list("/CampusPhotos")
   }
   onSubmit(f) {
     if (this.ImageArray.length != 0) {
@@ -51,7 +59,6 @@ export class CampusphotosmanageComponent implements OnInit {
       confirm("沒有上傳圖片")
     }
   }
-
   imageUploaded(data) {
     this.ImageArray.push(data["src"].replace("data:image/jpeg;base64,", ""));
   }

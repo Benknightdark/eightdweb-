@@ -1,6 +1,38 @@
 <div class="rows">
   <h2>營隊花絮管理</h2>
 </div>
+<div class="rows">
+  <div class="container">
+    <ngx-datatable class="material fullscreen" [columnMode]="'fixed'" [scrollbarH]="true" [rows]="ShowPhotoData" [columns]="columns" [headerHeight]="50"
+      [footerHeight]="50" [rowHeight]="'auto'">
+      <div *ngFor="let column of columns">
+        <div *ngIf="column.prop=='id'  else elseBlock">
+          <ngx-datatable-column name="">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+
+              <div style=" display: flex;
+                      align-items: center;
+                      justify-content: space-around;
+                       cursor: pointer; cursor: hand;
+                      ">
+                <md-icon (click)="onDetail(row.id)">pageview</md-icon>
+                <md-icon (click)="onEdit(row.id)">edit</md-icon>
+                <md-icon (click)="onDelete(row.id)">delete</md-icon>
+              </div>
+            </ng-template>
+          </ngx-datatable-column>
+        </div>
+        <ng-template #elseBlock>
+          <ngx-datatable-column [name]="column.prop">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              {{row[column.prop]}}
+            </ng-template>
+          </ngx-datatable-column>
+        </ng-template>
+      </div>
+    </ngx-datatable>
+  </div>
+</div>
 <div class="row">
   <form class="col s12" (ngSubmit)="onSubmit(f)" #f="ngForm">
     <div class="row">
