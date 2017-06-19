@@ -11,6 +11,10 @@
 
   <link href="assets/textillate/animate.css" rel="stylesheet">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="manifest" href="/assets/manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="PWA">
 </head>
 
 <body>
@@ -33,5 +37,12 @@
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
 
+</script>
+<script>
+if('serviceWorker' in navigator) {
+    navigator.serviceWorker
+        .register('/assets/service-worker.js')
+        .then(function() { console.log('Service Worker Registered'); });
+}
 </script>
 </html>
