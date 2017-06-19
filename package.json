@@ -8,7 +8,8 @@
     "build": "ng build -aot -prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+      "sw": "sw-precache --root=dist --config=sw-precache-config.js"
   },
   "private": true,
   "dependencies": {
@@ -46,6 +47,7 @@
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
     "protractor": "~5.1.2",
+    "sw-precache": "^5.2.0",
     "textillate": "^0.4.1",
     "ts-node": "~3.0.6",
     "tslint": "~5.4.3",
