@@ -1,6 +1,5 @@
 var cacheName = 'eightd';
 var filesToCache = [
-  '/',
   '/assets/images/index.jpg',
   '/assets/campusdm/1.jpg',
   '/assets/campusdm/2.jpg',
@@ -8,13 +7,11 @@ var filesToCache = [
    '/assets/images/background1.jpg',
     '/assets/images/background2.jpg',
      '/assets/images/background3.jpg',
-       '/assets/images/slide0.jpg',
+       '/assets/images/slide0.jpeg',
        '/assets/images/slide1.jpg',
        '/assets/images/slide2.jpg',
        '/assets/images/slide3.jpg',
-  '/index.html',
-  '/favicon.ico'
-
+  '/index.html'
 
 ];
 
