@@ -24,11 +24,19 @@ export class CampuseventmanageComponent implements OnInit {
     UpdateTime: "",
 
   };
+
   ShowEventData: Observable<any>
   constructor(private db: AngularFireDatabase) { }
 
   ngOnInit() {
+
+    // if (confirm("aaa")) {
+    //     console.log("yes")
+    // }else{
+    //   console.log("NO")
+    // }
     this.ShowEventData = this.db.list("/EventData")
+
   }
   imageUploaded(data) {
     //console.log(data)
@@ -59,29 +67,50 @@ export class CampuseventmanageComponent implements OnInit {
             .then(af => {
               confirm("成功建立新營隊訊息")
               this.isFinishSubmit = !this.isFinishSubmit;
+              this.DMImage = null;
+      this.EventData = {
+        id: "",
+        title: "",
+        content: "",
+        websignurl: "",
+        imageinfo: "",
+        imagepath: "",
+        enable: true,
+        CreateTime: "",
+        UpdateTime: "",
+
+
+      }
+      // f.reset();
             }
             ).catch(e => { console.log(e); confirm(e.message) })
         }).catch((e) => { console.log(e); confirm(e.message) });
       }).catch((e) => { console.log(e); confirm(e.message) });
+
+
+
     } else {
       confirm("沒有上傳圖片")
     }
 
   }
   onRemove(item) {
-    // Create a reference to the file to delete
-    const desertRef = firebase.storage().ref().child(item.imagepath);
+    if (confirm("Are you sure to delete ?")) {
+      // Create a reference to the file to delete
+      const desertRef = firebase.storage().ref().child(item.imagepath);
 
-    // Delete the file
-    desertRef.delete().then(function () {
-      console.log("delete file")
-      // File deleted successfully
-    }).catch(function (error) {
-      console.log(error)
-      // Uh-oh, an error occurred!
-    });
-    this.db.object('/EventData/' + item.id).remove();
-    //    this.ShowEventData= this.db.list("/EventData")
+      // Delete the file
+      desertRef.delete().then(function () {
+        console.log("delete file")
+        // File deleted successfully
+      }).catch(function (error) {
+        console.log(error)
+        // Uh-oh, an error occurred!
+      });
+      this.db.object('/EventData/' + item.id).remove();
+      //    this.ShowEventData= this.db.list("/EventData")
+    }
+
   }
 
 }

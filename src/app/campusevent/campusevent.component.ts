@@ -10,10 +10,12 @@ import 'rxjs'
 export class CampuseventComponent implements OnInit {
   ShowEventData//: Observable<any[]>
   isShowEvent: boolean;
+  ScreenWidth
   //EventCount;
   constructor(private db: AngularFireDatabase) { }
 
   ngOnInit() {
+    this.ScreenWidth = document.documentElement.clientWidth;
     this.db.list("/EventData", {
       query: {
         orderByChild: 'CreateTime'
@@ -36,6 +38,14 @@ export class CampuseventComponent implements OnInit {
         this.isShowEvent = true;
 
       })
+
+    Observable.fromEvent(window, 'resize')
+      .map(() => {
+        return document.documentElement.clientWidth;
+      })
+      .subscribe(data => {
+        this.ScreenWidth = data
+      });
 
   }
   onShareEvent(url) {
