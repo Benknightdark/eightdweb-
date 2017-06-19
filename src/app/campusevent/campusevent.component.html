@@ -2,9 +2,7 @@
   <div class="section">
     <div *ngIf="isShowEvent">
       <div class="row" *ngIf="ShowEventData.length>0">
-        <div class="col" [class.s4]="ScreenWidth>1500" [class.s12]="ScreenWidth<1500"
-         *ngFor="let item of ShowEventData"
-        >
+        <div class="col" [class.s4]="ScreenWidth>1500" [class.s12]="ScreenWidth<1500" *ngFor="let item of ShowEventData">
           <div>
             <div class="card">
               <div class="card-image waves-effect waves-block waves-light">
@@ -29,11 +27,11 @@
           </div>
 
         </div>
-        <div *ngIf="ShowEventData.length==0">
-          <div class="card">
-            <div class="card-content">
-              <span class="card-title activator grey-text text-darken-4">近期營隊活動即將開始</span>
-            </div>
+      </div>
+      <div class="col" *ngIf="ShowEventData.length==0">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4">近期營隊活動即將開始</span>
           </div>
         </div>
       </div>
