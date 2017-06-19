@@ -3,7 +3,7 @@
     <div class="row" >
       <div *ngIf="showphotos">
         <div class="col center" *ngFor="let cp of CampusPhotos"
-        [class.s4]="ScreenWidth>1500" [class.s12]="ScreenWidth<1500"
+        [class.s4]="ScreenWidth>1440" [class.s12]="ScreenWidth<1440"
         >
           <h5 class="black-text center">{{cp?.Name}}</h5>
           <div class="carousel carousel-slider center">
