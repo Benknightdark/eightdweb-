@@ -23,7 +23,7 @@ import { CampusphotosmanageComponent } from './campusphotosmanage/campusphotosma
 import { AccountService } from './services/account.service';
 import { AccountGuard } from './guard/account.guard';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 @NgModule({
   declarations: [
@@ -49,6 +49,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     ImageUploadModule.forRoot(),
     BrowserAnimationsModule,
+    NgxDatatableModule
 
   ],
   providers: [AccountService,AccountGuard],

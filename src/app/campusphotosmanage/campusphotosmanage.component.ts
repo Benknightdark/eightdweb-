@@ -3,6 +3,7 @@ import * as firebase from 'firebase';
 import { UUID } from 'angular2-uuid';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs'
 @Component({
   selector: 'app-campusphotosmanage',
   templateUrl: './campusphotosmanage.component.html',
@@ -20,17 +21,21 @@ export class CampusphotosmanageComponent implements OnInit {
   ImageArray = []
   isFinishSubmit: boolean = true;
   uploadcount = 0
-columns
-ShowPhotoData
+rows;
+columns;
   constructor(private db: AngularFireDatabase) { }
   ngOnInit() {
-    this.columns = [
-        { prop: 'id' },
-        { prop: 'Name' },
-        { prop: 'CreateTime' },
-        { prop: 'UpdateTime' },
-      ];
-       this.ShowPhotoData = this.db.list("/CampusPhotos")
+this.rows = [
+    { name: 'Austin', gender: 'Male', company: 'Swimlane' },
+    { name: 'Dany', gender: 'Male', company: 'KFC' },
+    { name: 'Molly', gender: 'Female', company: 'Burger King' },
+  ];
+  this.columns = [
+    { prop: 'name' },
+    { name: 'Gender' },
+    { name: 'Company' }
+  ];
+
   }
   onSubmit(f) {
     if (this.ImageArray.length != 0) {
