@@ -35,7 +35,6 @@ export class CampusphotosmanageformComponent implements OnInit {
         if (a[1].path == "detail") { this.title = "營隊花絮明細頁面" ;this.DisableButton=true}
         if (a[1].path == "edit") { this.title = "營隊花絮編輯頁面" ;this.DisableButton=false;}
         this.db.object('/CampusPhotos/'+a[2].path).subscribe(data=>{
-          console.log(data)
           this.CampusEventPhotos=data;
         })
       }

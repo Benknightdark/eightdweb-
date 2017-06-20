@@ -31,8 +31,6 @@ export class CampusphotosmanageComponent implements OnInit {
   page = new Page();
   loading: boolean = false;
   constructor(private http: CampushphotosmanageService,private router:Router) {
-
-
   }
   ngOnInit() {
     this.http.GetAllDataCounts().subscribe(
@@ -49,10 +47,6 @@ export class CampusphotosmanageComponent implements OnInit {
         this.setPage({ offset: 0 });
       }
     );
-
-
-
-
   }
   onDetail(id) {this.router.navigate(['/admin/campusphotosmanageform/detail/'+id]) }
   onEdit(id) { this.router.navigate(['/admin/campusphotosmanageform/edit/'+id])}
