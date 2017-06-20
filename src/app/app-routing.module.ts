@@ -7,6 +7,7 @@ import { CampuseventComponent } from './campusevent/campusevent.component';
 import { CampuseventmanageComponent } from './campuseventmanage/campuseventmanage.component';
 import { CampusphotosmanageComponent } from './campusphotosmanage/campusphotosmanage.component';
 import { AccountGuard } from './guard/account.guard';
+import { CampusphotosmanageformComponent } from "./campusphotosmanageform/campusphotosmanageform.component";
 
 
 const routes: Routes = [
@@ -25,6 +26,9 @@ const routes: Routes = [
       },
       {
         path: 'campusphotosmanage', component: CampusphotosmanageComponent
+      },
+      {
+        path: 'campusphotosmanageform', component: CampusphotosmanageformComponent
       }
     ], canActivate: [AccountGuard]
   },
