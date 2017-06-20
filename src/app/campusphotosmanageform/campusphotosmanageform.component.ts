@@ -26,23 +26,20 @@ export class CampusphotosmanageformComponent implements OnInit {
   isFinishSubmit: boolean = true;
   uploadcount = 0
   title = "";
+  DisableButton:boolean=false;
   ngOnInit() {
     this.route.url.subscribe(a => {
       if (a.length == 2) {
         if (a[1].path == "create") { this.title = "營隊花絮建立頁面" }
-
       } else {
-        if (a[1].path == "detail") { this.title = "營隊花絮明細頁面" }
-        if (a[1].path == "edit") { this.title = "營隊花絮編輯頁面" }
-        console.log(a[2].path)
+        if (a[1].path == "detail") { this.title = "營隊花絮明細頁面" ;this.DisableButton=true}
+        if (a[1].path == "edit") { this.title = "營隊花絮編輯頁面" ;this.DisableButton=false;}
+        this.db.object('/CampusPhotos/'+a[2].path).subscribe(data=>{
+          console.log(data)
+          this.CampusEventPhotos=data;
+        })
       }
-
-
-
-
-
     })
-    //this.route.params.subscribe(a=>console.log(a))
   }
   onSubmit(f) {
     if (this.ImageArray.length != 0) {
