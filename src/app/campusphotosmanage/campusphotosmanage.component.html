@@ -7,22 +7,49 @@
     <div class="spinner-layer spinner-blue-only">
       <div class="circle-clipper left">
         <div class="circle"></div>
-      </div><div class="gap-patch">
+      </div>
+      <div class="gap-patch">
         <div class="circle"></div>
-      </div><div class="circle-clipper right">
+      </div>
+      <div class="circle-clipper right">
         <div class="circle"></div>
       </div>
     </div>
   </div>
-<div *ngIf="showtable">
-<div class="section">
-<a class="waves-effect waves-light btn" [routerLink]="['/admin/campusphotosmanageform/create']"><i class="material-icons left">add</i>新增營隊花絮</a>
-</div>
+  <div *ngIf="showtable">
+    <div class="section">
+      <a class="waves-effect waves-light btn" [routerLink]="['/admin/campusphotosmanageform/create']"><i class="material-icons left">add</i>新增營隊花絮</a>
+    </div>
 
-  <ngx-datatable  class="material fullscreen" [columnMode]="'standard'" [scrollbarH]="true" [rows]="rows"
-    [columns]="columns" [footerHeight]="50" [rowHeight]="'auto'">
-    <div *ngFor="let column of columns">
-      <div *ngIf="column.prop=='id'  else elseBlock">
+    <ngx-datatable class="material fullscreen" [columnMode]="'standard'" [scrollbarH]="true" [rows]="rows" [columns]="columns"
+      [footerHeight]="50" [rowHeight]="'auto'" [externalPaging]="true" [count]="page.totalElements" [offset]="page.pageNumber"
+      [limit]="page.size" (page)='setPage($event)'>
+      <ngx-datatable-column [name]="c.prop" *ngFor="let c of columns">
+        <div *ngIf="c.prop=='id'  else elseBlock">
+          <ng-template  let-row="row" ngx-datatable-cell-template>
+
+            <div style=" display: flex;
+                      align-items: center;
+                      justify-content: space-around;
+                       cursor: pointer; cursor: hand;
+                      ">
+              <i class="material-icons" (click)="onDetail(row.id)">pageview</i>
+              <i class="material-icons" (click)="onEdit(row.id)">edit</i>
+              <i class="material-icons" ((click)="onDelete(row.id)">delete</i>
+
+            </div>
+          </ng-template>
+        </div>
+        <ng-template #elseBlock>
+          <ngx-datatable-column [name]="c.prop">
+            <ng-template let-row="row" ngx-datatable-cell-template >
+              {{row[c.prop]}}
+            </ng-template>
+          </ngx-datatable-column>
+        </ng-template>
+      </ngx-datatable-column>
+      <!--
+      <div *ngIf="columns.name=='id'  else elseBlock">
         <ngx-datatable-column name="">
           <ng-template let-row="row" ngx-datatable-cell-template>
 
@@ -38,16 +65,16 @@
             </div>
           </ng-template>
         </ngx-datatable-column>
-      </div>
+      </div>-->
+      <!--
       <ng-template #elseBlock>
-        <ngx-datatable-column [name]="column.prop">
+        <ngx-datatable-column [name]="columns.name">
           <ng-template let-row="row" ngx-datatable-cell-template>
-            {{row[column.prop]}}
+            {{row[columns.name]}}
           </ng-template>
         </ngx-datatable-column>
-      </ng-template>
-    </div>
-  </ngx-datatable>
+      </ng-template>-->
+    </ngx-datatable>
 
-</div>
+  </div>
 </div>

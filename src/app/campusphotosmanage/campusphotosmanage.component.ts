@@ -5,6 +5,8 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs'
 import * as moment from 'moment';
+import { Page } from '../shared/serversidetable/page'
+import { CampushphotosmanageService } from "app/services/campushphotosmanage.service";
 @Component({
   selector: 'app-campusphotosmanage',
   templateUrl: './campusphotosmanage.component.html',
@@ -25,40 +27,38 @@ export class CampusphotosmanageComponent implements OnInit {
   rows;
   columns;
   showtable: boolean = false;
-  constructor(private db: AngularFireDatabase) { }
-  ngOnInit() {
+  page = new Page();
+  constructor(private http: CampushphotosmanageService) {
 
-    this.db.list('/CampusPhotos')
-      .map(
-      data => {
-        const listdata = []
-        for (let i = 0; i < data.length; i++) {
-          listdata.push({
-            Name: data[i].Name,
-            CreateTime: moment.unix(data[i].CreateTime / 1000).format("YYYY/MM/DD hh:mm:ss"),
-            UpdateTime: moment.unix(data[i].UpdateTime / 1000).format("YYYY/MM/DD hh:mm:ss"),
-            id: data[i].id
-          })
-        }
-        return listdata;
-      }
-      ).share().subscribe(data => {
-        this.columns = [
-          { prop: 'id' },
-          { prop: 'Name' },
-          { prop: 'CreateTime' },
-          { prop: 'UpdateTime' },
-        ];
-        this.rows = data;
-        console.log(data)
-        this.showtable = true;
-      });
+    this.page.pageNumber = 0;
+    this.page.size = 1;
+  }
+  ngOnInit() {
+ this.columns = [
+        { prop: 'id' },
+        { prop: 'Name' },
+        { prop: 'CreateTime' },
+        { prop: 'UpdateTime' },
+      ];
+    this.setPage({ offset: 0 });
+
 
 
   }
   onDetail(id) { }
-  onEdit(id) {}
+  onEdit(id) { }
   onDelete(id) { }
+  setPage(pageInfo) {
+    console.log(pageInfo)
+    this.page.pageNumber = pageInfo.offset;
+    this.http.GetData(this.page).subscribe(data => {
 
+      this.page = data[0].pagedata;
+      this.rows = data[0].listdata;
+
+      this.showtable = true;
+      console.log(data)
+    });
+  }
 
 }

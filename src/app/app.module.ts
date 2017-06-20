@@ -25,6 +25,7 @@ import { AccountGuard } from './guard/account.guard';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { CampusphotosmanageformComponent } from './campusphotosmanageform/campusphotosmanageform.component';
+import { CampushphotosmanageService } from "app/services/campushphotosmanage.service";
 
 @NgModule({
   declarations: [
@@ -54,7 +55,7 @@ import { CampusphotosmanageformComponent } from './campusphotosmanageform/campus
     NgxDatatableModule
 
   ],
-  providers: [AccountService,AccountGuard],
+  providers: [AccountService,AccountGuard,CampushphotosmanageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
