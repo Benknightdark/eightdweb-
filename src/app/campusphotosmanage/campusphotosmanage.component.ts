@@ -45,7 +45,7 @@ export class CampusphotosmanageComponent implements OnInit {
 
 
   }
-  onDetail(id) { }
+  onDetail(id) {console.log(id) }
   onEdit(id) { }
   onDelete(id) { }
   setPage(pageInfo) {

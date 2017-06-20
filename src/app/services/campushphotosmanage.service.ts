@@ -10,9 +10,9 @@ export class CampushphotosmanageService {
   constructor(private db: AngularFireDatabase) { }
   GetData(page: Page) {
     page.totalElements = 3
-        page.totalPages = page.totalElements / page.size;
-        const start = page.pageNumber * page.size;
-        const end = Math.min((start + page.size), page.totalElements);
+    page.totalPages = page.totalElements / page.size;
+    const start = page.pageNumber * page.size;
+    const end = Math.min((start + page.size), page.totalElements);
     return this.db.list('/CampusPhotos', {
       query: {
         limitToFirst: start,
@@ -20,7 +20,6 @@ export class CampushphotosmanageService {
       }
     }).map(
       data => {
-
         const listdata = []
         for (let i = 0; i < data.length; i++) {
           listdata.push({
