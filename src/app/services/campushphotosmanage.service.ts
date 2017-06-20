@@ -15,7 +15,8 @@ export class CampushphotosmanageService {
     return this.db.list('/CampusPhotos', {
       query: {
         limitToFirst: start,
-        limitToLast: end
+        limitToLast: end,
+        orderByChild: 'UpdateTime',
       }
     }).map(
       data => {
@@ -29,7 +30,7 @@ export class CampushphotosmanageService {
           })
         }
         const ReturnData = [];
-        ReturnData.push({ listdata: listdata, pagedata: page })
+        ReturnData.push({ listdata: listdata.reverse(), pagedata: page })
         return ReturnData;
       }
       ).share()
