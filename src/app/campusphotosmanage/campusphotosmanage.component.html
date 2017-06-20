@@ -24,30 +24,35 @@
     <ngx-datatable class="material fullscreen" [columnMode]="'standard'" [scrollbarH]="true" [rows]="rows" [columns]="columns"
       [footerHeight]="50" [rowHeight]="'auto'" [externalPaging]="true" [count]="page.totalElements" [offset]="page.pageNumber"
       [limit]="page.size" (page)='setPage($event)'>
-      <ngx-datatable-column [name]="c.prop" *ngFor="let c of columns">
-        <div *ngIf="c.prop=='id'  else elseBlock">
-          <ng-template  let-row="row" ngx-datatable-cell-template >
+      <div *ngFor="let c of columns">
 
-            <div style=" display: flex;
+          <div *ngIf="c.prop=='id'  else elseBlock">
+               <ngx-datatable-column name="">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+
+              <div style=" display: flex;
                       align-items: center;
                       justify-content: space-around;
                        cursor: pointer; cursor: hand;
                       ">
-              <i class="material-icons" (click)="onDetail(row.id)">pageview</i>
-              <i class="material-icons" (click)="onEdit(row.id)">edit</i>
-              <i class="material-icons" ((click)="onDelete(row.id)">delete</i>
+                <i class="material-icons" (click)="onDetail(row.id)">pageview</i>
+                <i class="material-icons" (click)="onEdit(row.id)">edit</i>
+                <i class="material-icons" ((click)="onDelete(row.id)">delete</i>
 
-            </div>
-          </ng-template>
-        </div>
-        <ng-template #elseBlock>
-          <ngx-datatable-column [name]="c.prop">
-            <ng-template let-row="row" ngx-datatable-cell-template >
-              {{row[c.prop]}}
+              </div>
             </ng-template>
-          </ngx-datatable-column>
-        </ng-template>
-      </ngx-datatable-column>
+              </ngx-datatable-column>
+          </div>
+          <ng-template #elseBlock>
+            <ngx-datatable-column [name]="c.prop">
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                {{row[c.prop]}}
+              </ng-template>
+            </ngx-datatable-column>
+          </ng-template>
+
+      </div>
+
       <!--
       <div *ngIf="columns.name=='id'  else elseBlock">
         <ngx-datatable-column name="">
