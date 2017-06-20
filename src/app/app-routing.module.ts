@@ -28,8 +28,16 @@ const routes: Routes = [
         path: 'campusphotosmanage', component: CampusphotosmanageComponent
       },
       {
-        path: 'campusphotosmanageform', component: CampusphotosmanageformComponent
+        path: 'campusphotosmanageform/create', component: CampusphotosmanageformComponent
+      },
+      {
+        path: 'campusphotosmanageform/detail/:id', component: CampusphotosmanageformComponent
+      },
+      {
+        path: 'campusphotosmanageform/edit/:id', component: CampusphotosmanageformComponent
       }
+
+
     ], canActivate: [AccountGuard]
   },
   {
