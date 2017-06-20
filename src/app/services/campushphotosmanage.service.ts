@@ -9,7 +9,6 @@ export class CampushphotosmanageService {
 
   constructor(private db: AngularFireDatabase) { }
   GetData(page: Page) {
-    page.totalElements = 3
     page.totalPages = page.totalElements / page.size;
     const start = page.pageNumber * page.size;
     const end = Math.min((start + page.size), page.totalElements);
@@ -33,6 +32,10 @@ export class CampushphotosmanageService {
         ReturnData.push({ listdata: listdata, pagedata: page })
         return ReturnData;
       }
-      )
+      ).share()
   }
+  GetAllDataCounts() {
+    return this.db.object('/CampusPhotos').map(a => Object.keys(a).length).share()
+  }
+
 }
