@@ -28,17 +28,18 @@ export class CampusphotosmanageComponent implements OnInit {
   columns;
   showtable: boolean = false;
   page = new Page();
+  loading: boolean = false;
   constructor(private http: CampushphotosmanageService) {
 
     this.page.pageNumber = 0;
-    this.page.size = 1;
+    this.page.size = 3;
   }
   ngOnInit() {
  this.columns = [
         { prop: 'id' },
-        { prop: 'Name' },
-        { prop: 'CreateTime' },
-        { prop: 'UpdateTime' },
+        { prop: 'Name',sortable: true },
+        { prop: 'CreateTime',sortable: true},
+        { prop: 'UpdateTime' ,sortable: true},
       ];
     this.setPage({ offset: 0 });
 
@@ -60,5 +61,33 @@ export class CampusphotosmanageComponent implements OnInit {
       console.log(data)
     });
   }
+
+
+  onSort(event) {
+    // event was triggered, start sort sequence
+    console.log('Sort Event', event);
+    this.loading = true;
+    // emulate a server request with a timeout
+    setTimeout(() => {
+      const rows = [...this.rows];
+      // this is only for demo purposes, normally
+      // your server would return the result for
+      // you and you would just set the rows prop
+      const sort = event.sorts[0];
+      console.log(sort)
+     const sortprop=this.fistLetterUpper(sort.prop)
+      rows.sort((a, b) => {
+        console.log(a)
+            console.log(b)
+        return a[sortprop].localeCompare(b[sortprop]) * (sort.dir === 'desc' ? -1 : 1);
+      });
+
+      this.rows = rows;
+      this.loading = false;
+    }, 1000);
+  }
+  fistLetterUpper(str) {
+        return str.charAt(0).toUpperCase()+str.slice(1);
+}
 
 }

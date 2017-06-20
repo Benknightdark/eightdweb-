@@ -23,7 +23,11 @@
 
     <ngx-datatable class="material fullscreen" [columnMode]="'standard'" [scrollbarH]="true" [rows]="rows" [columns]="columns"
       [footerHeight]="50" [rowHeight]="'auto'" [externalPaging]="true" [count]="page.totalElements" [offset]="page.pageNumber"
-      [limit]="page.size" (page)='setPage($event)'>
+      [limit]="page.size" (page)='setPage($event)'
+         [externalSorting]="true"
+        [loadingIndicator]="loading"
+        (sort)="onSort($event)"
+      >
       <div *ngFor="let c of columns">
 
           <div *ngIf="c.prop=='id'  else elseBlock">
