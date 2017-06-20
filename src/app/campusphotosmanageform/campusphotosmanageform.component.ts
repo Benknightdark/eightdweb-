@@ -48,6 +48,7 @@ export class CampusphotosmanageformComponent implements OnInit {
           // this.ngZone.onMicrotaskEmpty.first().subscribe(() => {
           //   $('.materialboxed').materialbox();
           // });
+          this.CheckRemoveImage();
         })
       }
     })
@@ -86,5 +87,8 @@ export class CampusphotosmanageformComponent implements OnInit {
     console.log(event)
   }
   disableSendButton(event) {
+  }
+  CheckRemoveImage(){
+ console.log(  this.ReadytoRemoveImageArray.indexOf(true))
   }
 }
