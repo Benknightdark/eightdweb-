@@ -52,33 +52,6 @@
           </ng-template>
 
       </div>
-
-      <!--
-      <div *ngIf="columns.name=='id'  else elseBlock">
-        <ngx-datatable-column name="">
-          <ng-template let-row="row" ngx-datatable-cell-template>
-
-            <div style=" display: flex;
-                      align-items: center;
-                      justify-content: space-around;
-                       cursor: pointer; cursor: hand;
-                      ">
-              <i class="material-icons" (click)="onDetail(row.id)">pageview</i>
-              <i class="material-icons" (click)="onEdit(row.id)">edit</i>
-              <i class="material-icons" ((click)="onDelete(row.id)">delete</i>
-
-            </div>
-          </ng-template>
-        </ngx-datatable-column>
-      </div>-->
-      <!--
-      <ng-template #elseBlock>
-        <ngx-datatable-column [name]="columns.name">
-          <ng-template let-row="row" ngx-datatable-cell-template>
-            {{row[columns.name]}}
-          </ng-template>
-        </ngx-datatable-column>
-      </ng-template>-->
     </ngx-datatable>
 
   </div>
