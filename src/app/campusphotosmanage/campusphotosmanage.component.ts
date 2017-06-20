@@ -4,6 +4,7 @@ import { UUID } from 'angular2-uuid';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs'
+import * as moment from 'moment';
 @Component({
   selector: 'app-campusphotosmanage',
   templateUrl: './campusphotosmanage.component.html',
@@ -21,20 +22,38 @@ export class CampusphotosmanageComponent implements OnInit {
   ImageArray = []
   isFinishSubmit: boolean = true;
   uploadcount = 0
-rows;
-columns;
+  rows;
+  columns;
+  showtable: boolean = false;
   constructor(private db: AngularFireDatabase) { }
   ngOnInit() {
-this.rows = [
-    { name: 'Austin', gender: 'Male', company: 'Swimlane' },
-    { name: 'Dany', gender: 'Male', company: 'KFC' },
-    { name: 'Molly', gender: 'Female', company: 'Burger King' },
-  ];
-  this.columns = [
-    { prop: 'name' },
-    { name: 'Gender' },
-    { name: 'Company' }
-  ];
+
+    this.db.list('/CampusPhotos')
+      .map(
+      data => {
+        const listdata = []
+        for (let i = 0; i < data.length; i++) {
+          listdata.push({
+            Name: data[i].Name,
+            CreateTime: moment.unix(data[i].CreateTime / 1000).format("YYYY/MM/DD hh:mm:ss"),
+            UpdateTime: moment.unix(data[i].UpdateTime / 1000).format("YYYY/MM/DD hh:mm:ss"),
+            id: data[i].id
+          })
+        }
+        return listdata;
+      }
+      ).share().subscribe(data => {
+        this.columns = [
+          { prop: 'id' },
+          { prop: 'Name' },
+          { prop: 'CreateTime' },
+          { prop: 'UpdateTime' },
+        ];
+        this.rows = data;
+        console.log(data)
+        this.showtable = true;
+      });
+
 
   }
   onSubmit(f) {
