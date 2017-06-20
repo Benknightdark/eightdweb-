@@ -17,47 +17,55 @@
       </div>
     </div>
     <div class="row">
-      <div *ngIf="!DisableButton; else ElseBlock">
-     <image-upload [buttonCaption]="'上傳活動照片(最多三種)'" [dropBoxMessage]="'Drop Your DM'" (onFileUploadFinish)="imageUploaded($event)"
-        (onRemove)="imageRemoved($event)" (isPending)="disableSendButton($event)" [max]="3" [fileTooLargeMessage]="'圖片容量太大'">
-      </image-upload>
+      <div *ngIf="RouteName == 'create'&&ReadytoRemoveImageArray.length!=0; else ElseBlock">
+        <image-upload [buttonCaption]="'上傳活動照片(最多三種)'" [dropBoxMessage]="'Drop Your DM'" (onFileUploadFinish)="imageUploaded($event)"
+          (onRemove)="imageRemoved($event)" (isPending)="disableSendButton($event)" [max]="3" [fileTooLargeMessage]="'圖片容量太大'">
+        </image-upload>
       </div>
       <ng-template #ElseBlock>
-  <div class="row"  *ngFor="let item of CampusEventPhotos['ImageUrlArray']">
+        <div class="row" *ngFor="let item of CampusEventPhotos['ImageUrlArray'];let i=index">
+           <div *ngIf="RouteName == 'edit'">
+              <input type="checkbox"  class="filled-in" [(ngModel)]="ReadytoRemoveImageArray[i]" [name]="'RemoveImage'+i" [id]="'filled-in-box'+i"
+              />
+              <label [for]="'filled-in-box'+i">是否刪除</label>
+            </div>
+          <div class="col s3">
+            {{i}}
 
-      <div class="col s3">
-        <input type="checkbox" class="filled-in" id="filled-in-box" checked="checked" />
-      <label for="filled-in-box">是否刪除</label>
+          </div>
+          <div class="col s6">
+            <img [src]="item" class="materialboxed" width="500" height="200">
+          </div>
+        </div>
+      </ng-template>
+    </div>
+    <div class="row">
+      <div *ngIf="isFinishSubmit ;else elseblock">
+
+        <div *ngIf="RouteName == 'create'">
+          <button class="btn waves-effect waves-light" type="submit" name="action">上傳
+          <i class="material-icons left">file_upload</i>
+
+        </button>
+          <a class="btn waves-effect waves-light" [routerLink]="['/admin/campusphotosmanage']"><i class="material-icons left">cancel</i>返回</a>
+        </div>
+        <div *ngIf="RouteName == 'detail'">
+          <a class="btn waves-effect waves-light" [routerLink]="['/admin/campusphotosmanageform/edit',RouteParm]"><i class="material-icons left">edit</i>編輯</a>
+          <a class="btn waves-effect waves-light" [routerLink]="['/admin/campusphotosmanage']"><i class="material-icons left">cancel</i>返回</a>
+        </div>
+        <div *ngIf="RouteName == 'edit'">
+          <a class="btn waves-effect waves-light" [routerLink]="['/admin/campusphotosmanageform/detail',RouteParm]"><i class="material-icons left">pageview</i>明細</a>
+          <a class="btn waves-effect waves-light" [routerLink]="['/admin/campusphotosmanage']"><i class="material-icons left">cancel</i>返回</a>
+        </div>
 
       </div>
-      <div class="col s6">
-        <img  [src]="item"
-
- class="materialboxed" width="500" height="200">
-        </div>
     </div>
-
-
-
-
-
-      </ng-template>
-
-    </div>
-    <div *ngIf="isFinishSubmit ;else elseblock">
-      <button class="btn waves-effect waves-light" type="submit" name="action" [class.disabled]="DisableButton">上傳
-    <i class="material-icons left">file_upload</i>
-  </button>
-
-      <a class="btn waves-effect waves-light" [routerLink]="['/admin/campusphotosmanage']"><i class="material-icons left">cancel</i>返回</a>
-    </div>
-
     <ng-template #elseblock>
       <div class="progress">
         <div class="indeterminate"></div>
       </div>
     </ng-template>
-
   </form>
 
 </div>
+{{ReadytoRemoveImageArray|json}}

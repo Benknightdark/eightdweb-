@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import * as firebase from 'firebase';
 import { UUID } from 'angular2-uuid';
 import { AngularFireDatabase } from 'angularfire2/database';
@@ -13,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CampusphotosmanageformComponent implements OnInit {
 
-  constructor(private db: AngularFireDatabase, private route: ActivatedRoute) { }
+  constructor(private db: AngularFireDatabase, private route: ActivatedRoute, private ngZone: NgZone) { }
   CampusEventPhotos = {
     id: '',
     Name: '',
@@ -22,20 +22,32 @@ export class CampusphotosmanageformComponent implements OnInit {
     CreateTime: "",
     UpdateTime: ""
   }
-  ImageArray = []
+  ImageArray = [];
+  ReadytoRemoveImageArray = []
   isFinishSubmit: boolean = true;
   uploadcount = 0
   title = "";
-  DisableButton:boolean=false;
+  DisableButton: boolean = false;
+  RouteName = "";
+  RouteParm = ""
   ngOnInit() {
+
     this.route.url.subscribe(a => {
-      if (a.length == 2) {
-        if (a[1].path == "create") { this.title = "營隊花絮建立頁面" }
-      } else {
-        if (a[1].path == "detail") { this.title = "營隊花絮明細頁面" ;this.DisableButton=true}
-        if (a[1].path == "edit") { this.title = "營隊花絮編輯頁面" ;this.DisableButton=false;}
-        this.db.object('/CampusPhotos/'+a[2].path).subscribe(data=>{
-          this.CampusEventPhotos=data;
+      this.RouteName = a[1].path;
+
+
+      if (a[1].path == "create")
+      { this.title = "營隊花絮建立頁面" }
+      // tslint:disable-next-line:one-line
+      else {
+        this.RouteParm = a[2].path;
+        if (this.RouteName == "detail") { this.title = "營隊花絮明細頁面"; this.DisableButton = true; this.ReadytoRemoveImageArray = [] }
+        if (this.RouteName == "edit") { this.title = "營隊花絮編輯頁面"; this.DisableButton = false; this.ReadytoRemoveImageArray = [false, false, false] }
+        this.db.object('/CampusPhotos/' + this.RouteParm).subscribe(data => {
+          this.CampusEventPhotos = data;
+          // this.ngZone.onMicrotaskEmpty.first().subscribe(() => {
+          //   $('.materialboxed').materialbox();
+          // });
         })
       }
     })
