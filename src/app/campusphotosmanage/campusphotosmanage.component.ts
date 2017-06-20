@@ -1,3 +1,4 @@
+import {Router} from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
 import { UUID } from 'angular2-uuid';
@@ -29,7 +30,7 @@ export class CampusphotosmanageComponent implements OnInit {
   showtable: boolean = false;
   page = new Page();
   loading: boolean = false;
-  constructor(private http: CampushphotosmanageService) {
+  constructor(private http: CampushphotosmanageService,private router:Router) {
 
 
   }
@@ -53,8 +54,8 @@ export class CampusphotosmanageComponent implements OnInit {
 
 
   }
-  onDetail(id) { console.log(id) }
-  onEdit(id) { }
+  onDetail(id) {this.router.navigate(['/admin/campusphotosmanageform/detail/'+id]) }
+  onEdit(id) { this.router.navigate(['/admin/campusphotosmanageform/edit/'+id])}
   onDelete(id) { }
   setPage(pageInfo) {
     console.log(pageInfo)

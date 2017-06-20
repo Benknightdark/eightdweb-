@@ -5,7 +5,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs'
 import * as moment from 'moment';
-
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-campusphotosmanageform',
   templateUrl: './campusphotosmanageform.component.html',
@@ -13,7 +13,7 @@ import * as moment from 'moment';
 })
 export class CampusphotosmanageformComponent implements OnInit {
 
-  constructor(private db: AngularFireDatabase) { }
+  constructor(private db: AngularFireDatabase, private route: ActivatedRoute) { }
   CampusEventPhotos = {
     id: '',
     Name: '',
@@ -25,7 +25,24 @@ export class CampusphotosmanageformComponent implements OnInit {
   ImageArray = []
   isFinishSubmit: boolean = true;
   uploadcount = 0
+  title = "";
   ngOnInit() {
+    this.route.url.subscribe(a => {
+      if (a.length == 2) {
+        if (a[1].path == "create") { this.title = "營隊花絮建立頁面" }
+
+      } else {
+        if (a[1].path == "detail") { this.title = "營隊花絮明細頁面" }
+        if (a[1].path == "edit") { this.title = "營隊花絮編輯頁面" }
+        console.log(a[2].path)
+      }
+
+
+
+
+
+    })
+    //this.route.params.subscribe(a=>console.log(a))
   }
   onSubmit(f) {
     if (this.ImageArray.length != 0) {
