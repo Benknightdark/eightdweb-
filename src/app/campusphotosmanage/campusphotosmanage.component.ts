@@ -56,6 +56,9 @@ export class CampusphotosmanageComponent implements OnInit {
 
 
   }
+  onDetail(id) { }
+  onEdit(id) {}
+  onDelete(id) { }
   onSubmit(f) {
     if (this.ImageArray.length != 0) {
       this.uploadcount = 0;

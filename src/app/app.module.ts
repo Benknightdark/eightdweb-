@@ -24,6 +24,7 @@ import { AccountService } from './services/account.service';
 import { AccountGuard } from './guard/account.guard';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { CampusphotosmanageformComponent } from './campusphotosmanageform/campusphotosmanageform.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     AdminlayoutComponent,
     CampuseventmanageComponent,
     CampusphotosmanageComponent,
+    CampusphotosmanageformComponent,
 
 
   ],

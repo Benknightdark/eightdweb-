@@ -2,7 +2,7 @@
   <div class="rows">
     <h2>營隊花絮管理</h2>
   </div>
-  <ngx-datatable *ngIf="showtable" class="material fullscreen" [columnMode]="'force'" [scrollbarH]="true" [rows]="rows" [columns]="columns"
+  <ngx-datatable *ngIf="showtable" class="material fullscreen" [columnMode]="'standard'" [scrollbarH]="true" [rows]="rows" [columns]="columns"
     [footerHeight]="50" [rowHeight]="'auto'">
     <div *ngFor="let column of columns">
       <div *ngIf="column.prop=='id'  else elseBlock">
@@ -14,9 +14,10 @@
                       justify-content: space-around;
                        cursor: pointer; cursor: hand;
                       ">
-              <span (click)="onDetail(row.id)">pageview</span>
-              <span (click)="onEdit(row.id)">edit</span>
-              <span (click)="onDelete(row.id)">delete</span>
+                  <i class="material-icons" (click)="onDetail(row.id)">pageview</i>
+               <i class="material-icons" (click)="onEdit(row.id)">edit</i>
+                <i class="material-icons" ((click)="onDelete(row.id)">delete</i>
+
             </div>
           </ng-template>
         </ngx-datatable-column>
