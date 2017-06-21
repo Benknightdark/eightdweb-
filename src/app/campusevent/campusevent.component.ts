@@ -18,7 +18,7 @@ export class CampuseventComponent implements OnInit {
     this.ScreenWidth = document.documentElement.clientWidth;
     this.db.list("/EventData", {
       query: {
-        orderByChild: 'CreateTime'
+        orderByChild: 'UpdateTime'
       }
     })
       .map((arr) => {

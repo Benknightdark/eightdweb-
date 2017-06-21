@@ -96,9 +96,6 @@ export class CampuseventmanageformComponent implements OnInit {
               ).catch(e => { console.log(e); confirm(e.message) })
           }).catch((e) => { console.log(e); confirm(e.message) });
         }).catch((e) => { console.log(e); confirm(e.message) });
-
-
-
       } else {
         confirm("沒有上傳圖片")
       }
@@ -129,9 +126,6 @@ export class CampuseventmanageformComponent implements OnInit {
                     }).then(callback => { this.isFinishSubmit = !this.isFinishSubmit})
                   }).catch(errors => console.log(errors))
               }).catch(errors => console.log(errors))
-
-
-
           })
           .catch(errors => console.log(errors))
         //更新dm
