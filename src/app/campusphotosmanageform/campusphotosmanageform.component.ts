@@ -14,7 +14,7 @@ import { List } from 'linqts';
 })
 export class CampusphotosmanageformComponent implements OnInit {
 
-  constructor(private db: AngularFireDatabase, private route: ActivatedRoute, private ngZone: NgZone) { }
+  constructor(private db: AngularFireDatabase, private route: ActivatedRoute) { }
   CampusEventPhotos = {
     id: '',
     Name: '',

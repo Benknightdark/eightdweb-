@@ -3,6 +3,7 @@ import * as firebase from 'firebase';
 import { UUID } from 'angular2-uuid';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-campuseventmanageform',
@@ -25,25 +26,43 @@ isFinishSubmit = true;
 
   };
 
-  ShowEventData: Observable<any>
-  constructor(private db: AngularFireDatabase) { }
+
+   title = "";
+  DisableButton: boolean = false;
+  RouteName = "";
+  RouteParm = "";
+  IsImageReadyToChange:boolean=false;
+  constructor(private db: AngularFireDatabase,private route: ActivatedRoute) { }
 
   ngOnInit() {
-
-   // this.ShowEventData = this.db.list("/EventData")
+    this.route.url.subscribe(a => {
+      this.RouteName = a[1].path;
+      if (a[1].path == "create")
+      { this.title = "營隊活動建立頁面" }
+      else {
+        this.RouteParm = a[2].path;
+        if (this.RouteName == "detail") {
+          this.title = "營隊活動明細頁面";
+          this.DisableButton = true;
+        }
+        if (this.RouteName == "edit") {
+          this.title = "營隊活動編輯頁面";
+          this.DisableButton = false;
+        }
+        this.db.object('/EventData/' + this.RouteParm).subscribe(data => {
+          this.EventData = data;
+        })
+      }
+    })
 
   }
   imageUploaded(data) {
-    //console.log(data)
     this.DMImage = data["src"].replace("data:image/jpeg;base64,", "");
-    // console.log(this.DMImage)
   }
   imageRemoved(event) {
-    // this.MetaFormDes.imageinfo = "";
-    //console.log(event)
+    this.DMImage ="";
   }
   disableSendButton(event) {
-    //console.log(event)
   }
   onSubmit(f) {
     if (this.DMImage != "") {
