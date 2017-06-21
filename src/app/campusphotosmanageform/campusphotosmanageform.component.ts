@@ -129,16 +129,16 @@ export class CampusphotosmanageformComponent implements OnInit {
         .Where(x => x === true)
         .Select(y => y).ToArray().length;
 
-       this.EditPageUploadImages= (new List<any>(this.EditPageUploadImages))
+      const test = (new List<any>(this.EditPageUploadImages))
         .Where(x => x.IsEdit === true)
         .Select(y => y).ToArray();
-        console.log(test)
+      console.log(test)
       //判斷是否更新圖片
       if (this.EditPageUploadImagesArray.length != 0) {
         if (this.EditPageUploadImagesArray.length == ListReadytoRemoveImageArraylength) {
           //插入更新圖片
-          for (let j = 0; j < this.EditPageUploadImages.length; j++) {
-            if (this.EditPageUploadImages[j].IsEdit == true && this.EditPageUploadImages[j].src == "") {
+          for (let j = 0; j < test.length; j++) {
+            if (this.EditPageUploadImages[test[j].no].IsEdit == true) {
               this.EditPageUploadImages[j].src = this.EditPageUploadImagesArray[j]
             }
           }
@@ -161,6 +161,25 @@ export class CampusphotosmanageformComponent implements OnInit {
                       Name: this.CampusEventPhotos.Name,
                       UpdateTime: Date.now().toString(),
                       ImageUrlArray: this.CampusEventPhotos.ImageUrlArray
+                    }).then(data => {
+                      this.ReadytoRemoveImageArray = [false, false, false]
+                      this.EditPageUploadImages = [{
+                        no: 0,
+                        IsEdit: "",
+                        src: ""
+                      },
+                      {
+                        no: 1,
+                        IsEdit: "",
+                        src: ""
+                      },
+                      {
+                        no: 2,
+                        IsEdit: "",
+                        src: ""
+                      },
+                      ];
+                      this.EditPageUploadImagesArray = [];
                     })
                 })
                 .catch(function (error) {
