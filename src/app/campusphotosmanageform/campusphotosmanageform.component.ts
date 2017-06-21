@@ -29,7 +29,10 @@ export class CampusphotosmanageformComponent implements OnInit {
   title = "";
   DisableButton: boolean = false;
   RouteName = "";
-  RouteParm = ""
+  RouteParm = "";
+  EditPageUploadImagesCount = 0;
+  EditPageUploadImages = [];
+  EditPageUploadImagesArray=[];
   ngOnInit() {
 
     this.route.url.subscribe(a => {
@@ -41,8 +44,32 @@ export class CampusphotosmanageformComponent implements OnInit {
       // tslint:disable-next-line:one-line
       else {
         this.RouteParm = a[2].path;
-        if (this.RouteName == "detail") { this.title = "營隊花絮明細頁面"; this.DisableButton = true; this.ReadytoRemoveImageArray = [] }
-        if (this.RouteName == "edit") { this.title = "營隊花絮編輯頁面"; this.DisableButton = false; this.ReadytoRemoveImageArray = [false, false, false] }
+        if (this.RouteName == "detail") {
+          this.title = "營隊花絮明細頁面";
+          this.DisableButton = true;
+          this.ReadytoRemoveImageArray = []
+          this.EditPageUploadImages = [];
+            this.EditPageUploadImagesArray=[];
+        }
+        if (this.RouteName == "edit") {
+          this.title = "營隊花絮編輯頁面";
+          this.DisableButton = false;
+          this.ReadytoRemoveImageArray = [false, false, false]
+          this.EditPageUploadImages = [{
+            no: 0,
+            IsEdit: ""
+          },
+          {
+            no: 1,
+            IsEdit: ""
+          },
+          {
+            no: 2,
+            IsEdit: ""
+          },
+          ];
+                      this.EditPageUploadImagesArray=[];
+        }
         this.db.object('/CampusPhotos/' + this.RouteParm).subscribe(data => {
           this.CampusEventPhotos = data;
           // this.ngZone.onMicrotaskEmpty.first().subscribe(() => {
@@ -51,6 +78,23 @@ export class CampusphotosmanageformComponent implements OnInit {
         })
       }
     })
+  }
+  onChange(i, selectedImage) {
+    if (selectedImage) {
+
+      this.EditPageUploadImagesCount++
+      console.log(selectedImage)
+      console.log("true")
+       this.EditPageUploadImages[i]["IsEdit"]=selectedImage
+    } else {
+      this.EditPageUploadImagesCount--
+      console.log(selectedImage)
+      console.log("false")
+             this.EditPageUploadImages[i]["IsEdit"]=selectedImage
+
+    }
+  console.log(this.EditPageUploadImages)
+
   }
   onSubmit(f) {
     if (this.ImageArray.length != 0) {
@@ -80,10 +124,18 @@ export class CampusphotosmanageformComponent implements OnInit {
     }
   }
   imageUploaded(data) {
+    if(this.RouteName=="create"){
     this.ImageArray.push(data["src"].replace("data:image/jpeg;base64,", ""));
+    }else{
+      this.EditPageUploadImagesArray.push(data["src"].replace("data:image/jpeg;base64,", ""))
+      console.log(this.EditPageUploadImagesArray)
+    }
+
   }
   imageRemoved(event) {
-    console.log(event)
+const idx=this.EditPageUploadImagesArray.indexOf(event["src"].replace("data:image/jpeg;base64,", ""))
+this.EditPageUploadImagesArray.splice(idx,1)
+console.log(this.EditPageUploadImagesArray)
   }
   disableSendButton(event) {
   }

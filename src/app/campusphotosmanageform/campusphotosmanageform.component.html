@@ -18,21 +18,24 @@
     </div>
     <div class="row">
       <div *ngIf="RouteName == 'create'; else ElseBlock">
-        <image-upload [buttonCaption]="'上傳活動照片(最多三種)'" [dropBoxMessage]="'Drop Your DM'" (onFileUploadFinish)="imageUploaded($event)"
+        <image-upload [buttonCaption]="'上傳活動照片(最多三張)'" [dropBoxMessage]="'Drop Your DM'" (onFileUploadFinish)="imageUploaded($event)"
           (onRemove)="imageRemoved($event)" (isPending)="disableSendButton($event)" [max]="3" [fileTooLargeMessage]="'圖片容量太大'">
         </image-upload>
       </div>
       <ng-template #ElseBlock>
         <div *ngIf=" this.ReadytoRemoveImageArray.indexOf(true)!=-1">
-          <image-upload [buttonCaption]="'上傳活動照片(最多三種)'" [dropBoxMessage]="'Drop Your DM'" (onFileUploadFinish)="imageUploaded($event)"
-            (onRemove)="imageRemoved($event)" (isPending)="disableSendButton($event)" [max]="3" [fileTooLargeMessage]="'圖片容量太大'">
+          <image-upload [buttonCaption]="'更新活動照片(最多'+EditPageUploadImagesCount+'張)'" [dropBoxMessage]="'Drop Your DM'" (onFileUploadFinish)="imageUploaded($event)"
+            (onRemove)="imageRemoved($event)" (isPending)="disableSendButton($event)" [max]="EditPageUploadImagesCount" [fileTooLargeMessage]="'圖片容量太大'">
           </image-upload>
         </div>
         <div class="row" *ngFor="let item of CampusEventPhotos['ImageUrlArray'];let i=index">
 
           <div class="col s3">
             <div *ngIf="RouteName == 'edit'">
-              <input type="checkbox" class="filled-in" [(ngModel)]="ReadytoRemoveImageArray[i]" [name]="'RemoveImage'+i" [id]="'filled-in-box'+i"
+              <input type="checkbox" class="filled-in"
+               [(ngModel)]="ReadytoRemoveImageArray[i]"
+                [name]="'RemoveImage'+i" [id]="'filled-in-box'+i"
+                (change)="onChange(i,ReadytoRemoveImageArray[i])"
               />
               <label [for]="'filled-in-box'+i">是否刪除</label>
             </div>
