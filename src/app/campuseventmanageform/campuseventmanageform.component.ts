@@ -12,7 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CampuseventmanageformComponent implements OnInit {
   isFinishSubmit = true;
-  DMImage=null;
+  DMImage = null;
   EventData = {
     id: "",
     title: "",
@@ -73,7 +73,6 @@ export class CampuseventmanageformComponent implements OnInit {
             const id = UUID.UUID();
             this.EventData.id = id;
             this.EventData.imageinfo = a;
-
             this.EventData.CreateTime = Date.now().toString();
             this.EventData.UpdateTime = Date.now().toString();
             this.db.object('/EventData/' + this.EventData.id).set(this.EventData)
@@ -103,20 +102,49 @@ export class CampuseventmanageformComponent implements OnInit {
       } else {
         confirm("沒有上傳圖片")
       }
-    }else if(this.RouteName=="edit"){
-      if (this.DMImage != null){
+    } else if (this.RouteName == "edit") {
+         this.isFinishSubmit = !this.isFinishSubmit;
+      if (this.DMImage != null) {
         console.log("sdf")
+        const ImageName = (Date.now() + ".jpg")
+        firebase.storage().ref().child(this.EventData.imagepath).delete()
+          .then(a => {
+            console.log(a)
+            firebase.storage().ref().child("/DM/" + ImageName)
+              .putString(this.DMImage, 'base64')
+              .then((snapshot) => {
+                this.EventData.imagepath = snapshot.metadata.fullPath;
+                firebase.storage().ref()
+                  .child("/DM/" + ImageName)
+                  .getDownloadURL()
+                  .then(DownloadURL => {
+                    this.EventData.imageinfo = DownloadURL;
+                    this.db.object('/EventData/' + this.EventData.id).update({
+                      imagepath: this.EventData.imagepath,
+                      imageinfo: this.EventData.imageinfo,
+                      UpdateTime: Date.now().toString(),
+                      title: this.EventData.title,
+                      content: this.EventData.content,
+                      websignurl: this.EventData.websignurl,
+                    }).then(callback => { this.isFinishSubmit = !this.isFinishSubmit})
+                  }).catch(errors => console.log(errors))
+              }).catch(errors => console.log(errors))
+
+
+
+          })
+          .catch(errors => console.log(errors))
         //更新dm
-      }else{
+      } else {
         this.db.object('/EventData/' + this.EventData.id).update({
-          UpdateTime:Date.now().toString(),
-          title:this.EventData.title,
-          content:this.EventData.content,
+          UpdateTime: Date.now().toString(),
+          title: this.EventData.title,
+          content: this.EventData.content,
           websignurl: this.EventData.websignurl,
-        }).then(a=>console.log(a))
+        }).then(a => { this.isFinishSubmit = !this.isFinishSubmit;})
       }
-    }else{
-       confirm("沒有上傳圖片")
+    } else {
+      confirm("沒有上傳圖片")
     }
 
 
