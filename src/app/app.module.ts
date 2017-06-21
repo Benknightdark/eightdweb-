@@ -27,6 +27,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { CampusphotosmanageformComponent } from './campusphotosmanageform/campusphotosmanageform.component';
 import { CampushphotosmanageService } from "app/services/campushphotosmanage.service";
 import { CampuseventmanageformComponent } from './campuseventmanageform/campuseventmanageform.component';
+import { CampuseventmanageService } from './services/campuseventmanage.service';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,7 @@ import { CampuseventmanageformComponent } from './campuseventmanageform/campusev
     NgxDatatableModule
 
   ],
-  providers: [AccountService,AccountGuard,CampushphotosmanageService],
+  providers: [AccountService,AccountGuard,CampushphotosmanageService,CampuseventmanageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

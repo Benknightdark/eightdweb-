@@ -30,11 +30,6 @@ isFinishSubmit = true;
 
   ngOnInit() {
 
-    // if (confirm("aaa")) {
-    //     console.log("yes")
-    // }else{
-    //   console.log("NO")
-    // }
    // this.ShowEventData = this.db.list("/EventData")
 
   }
