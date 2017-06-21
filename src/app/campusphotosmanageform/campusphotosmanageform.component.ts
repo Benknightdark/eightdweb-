@@ -102,8 +102,6 @@ export class CampusphotosmanageformComponent implements OnInit {
   }
   onSubmit(f) {
     if (this.ImageArray.length != 0) {
-
-
       this.uploadcount = 0;
       this.isFinishSubmit = !this.isFinishSubmit;
       this.CampusEventPhotos.id = UUID.UUID();
@@ -126,25 +124,22 @@ export class CampusphotosmanageformComponent implements OnInit {
           }).catch(error => console.log(error))
 
       }
-
-
-
-
     } else if (this.RouteName == 'edit') {
-
       const ListReadytoRemoveImageArraylength = (new List<any>(this.ReadytoRemoveImageArray))
         .Where(x => x === true)
         .Select(y => y).ToArray().length;
-      //  console.log(ListReadytoRemoveImageArraylength)
+
+       this.EditPageUploadImages= (new List<any>(this.EditPageUploadImages))
+        .Where(x => x.IsEdit === true)
+        .Select(y => y).ToArray();
+        console.log(test)
       //判斷是否更新圖片
       if (this.EditPageUploadImagesArray.length != 0) {
         if (this.EditPageUploadImagesArray.length == ListReadytoRemoveImageArraylength) {
           //插入更新圖片
-          for (let i = 0; i < this.EditPageUploadImagesArray.length; i++) {
-            for (let j = 0; j < this.EditPageUploadImages.length; j++) {
-              if (this.EditPageUploadImages[j].IsEdit == true && this.EditPageUploadImages[j].src == "") {
-                this.EditPageUploadImages[j].src = this.EditPageUploadImagesArray[i]
-              }
+          for (let j = 0; j < this.EditPageUploadImages.length; j++) {
+            if (this.EditPageUploadImages[j].IsEdit == true && this.EditPageUploadImages[j].src == "") {
+              this.EditPageUploadImages[j].src = this.EditPageUploadImagesArray[j]
             }
           }
           console.log(this.EditPageUploadImages)
@@ -167,7 +162,6 @@ export class CampusphotosmanageformComponent implements OnInit {
                       UpdateTime: Date.now().toString(),
                       ImageUrlArray: this.CampusEventPhotos.ImageUrlArray
                     })
-
                 })
                 .catch(function (error) {
                   console.log(error.message)
