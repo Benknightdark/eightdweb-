@@ -26,6 +26,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { CampusphotosmanageformComponent } from './campusphotosmanageform/campusphotosmanageform.component';
 import { CampushphotosmanageService } from "app/services/campushphotosmanage.service";
+import { CampuseventmanageformComponent } from './campuseventmanageform/campuseventmanageform.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { CampushphotosmanageService } from "app/services/campushphotosmanage.ser
     CampuseventmanageComponent,
     CampusphotosmanageComponent,
     CampusphotosmanageformComponent,
+    CampuseventmanageformComponent,
 
 
   ],

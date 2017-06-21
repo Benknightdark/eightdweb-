@@ -51,26 +51,17 @@ export class CampusphotosmanageComponent implements OnInit {
   onDetail(id) { this.router.navigate(['/admin/campusphotosmanageform/detail/' + id]) }
   onEdit(id) { this.router.navigate(['/admin/campusphotosmanageform/edit/' + id]) }
   onDelete(id) {
-
     if (confirm("Are you sure to delete ?")) {
-      // Create a reference to the file to delete
-
       const PhotoCount = 3;
       for (let i = 0; i < PhotoCount; i++) {
         firebase.storage().ref().child("/" + id + "/" + i + ".jpg").delete().then(function () {
           console.log("delete file")
-
         }).catch(function (error) {
           console.log(error)
-          // Uh-oh, an error occurred!
         });
       }
-
       this.db.object('/CampusPhotos/' + id).remove().then(d => console.log(d)).catch(errors => console.log(errors));
-
     }
-
-
   }
   setPage(pageInfo) {
     console.log(pageInfo)
