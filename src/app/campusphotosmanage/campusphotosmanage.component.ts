@@ -1,4 +1,4 @@
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
 import { UUID } from 'angular2-uuid';
@@ -30,7 +30,7 @@ export class CampusphotosmanageComponent implements OnInit {
   showtable: boolean = false;
   page = new Page();
   loading: boolean = false;
-  constructor(private http: CampushphotosmanageService,private router:Router) {
+  constructor(private http: CampushphotosmanageService, private router: Router, private db: AngularFireDatabase) {
   }
   ngOnInit() {
     this.http.GetAllDataCounts().subscribe(
@@ -48,9 +48,30 @@ export class CampusphotosmanageComponent implements OnInit {
       }
     );
   }
-  onDetail(id) {this.router.navigate(['/admin/campusphotosmanageform/detail/'+id]) }
-  onEdit(id) { this.router.navigate(['/admin/campusphotosmanageform/edit/'+id])}
-  onDelete(id) { }
+  onDetail(id) { this.router.navigate(['/admin/campusphotosmanageform/detail/' + id]) }
+  onEdit(id) { this.router.navigate(['/admin/campusphotosmanageform/edit/' + id]) }
+  onDelete(id) {
+
+    if (confirm("Are you sure to delete ?")) {
+      // Create a reference to the file to delete
+
+      const PhotoCount = 3;
+      for (let i = 0; i < PhotoCount; i++) {
+        firebase.storage().ref().child("/" + id + "/" + i + ".jpg").delete().then(function () {
+          console.log("delete file")
+
+        }).catch(function (error) {
+          console.log(error)
+          // Uh-oh, an error occurred!
+        });
+      }
+
+      this.db.object('/CampusPhotos/' + id).remove().then(d => console.log(d)).catch(errors => console.log(errors));
+
+    }
+
+
+  }
   setPage(pageInfo) {
     console.log(pageInfo)
     this.page.pageNumber = pageInfo.offset;
