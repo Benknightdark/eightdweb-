@@ -25,6 +25,7 @@ export class CampuseventmanageService {
         for (let i = 0; i < data.length; i++) {
           listdata.push({
             title: data[i].title,
+            imagepath:data[i].imagepath,
             CreateTime: moment.unix(data[i].CreateTime / 1000).format("YYYY/MM/DD hh:mm:ss"),
             UpdateTime: moment.unix(data[i].UpdateTime / 1000).format("YYYY/MM/DD hh:mm:ss"),
             id: data[i].id

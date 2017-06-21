@@ -18,7 +18,7 @@
   </div>
   <div *ngIf="showtable">
     <div class="section">
-      <a class="waves-effect waves-light btn" [routerLink]="['/admin/campuseventmanageform/create']"><i class="material-icons left">add</i>新增營隊花絮</a>
+      <a class="waves-effect waves-light btn" [routerLink]="['/admin/campuseventmanageform/create']"><i class="material-icons left">add</i>新增營隊活動</a>
     </div>
 
     <ngx-datatable class="material fullscreen" [columnMode]="'standard'" [scrollbarH]="true" [rows]="rows" [columns]="columns"
@@ -41,7 +41,7 @@
                       ">
                 <i class="material-icons" (click)="onDetail(row.id)">pageview</i>
                 <i class="material-icons" (click)="onEdit(row.id)">edit</i>
-                <i class="material-icons" (click)="onDelete(row.id)">delete</i>
+                <i class="material-icons" (click)="onDelete(row)">delete</i>
 
               </div>
             </ng-template>

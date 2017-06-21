@@ -55,17 +55,16 @@ isFinishSubmit: boolean = true;
   }
   onDetail(id) { this.router.navigate(['/admin/campuseventmanageform/detail/' + id]) }
   onEdit(id) { this.router.navigate(['/admin/campuseventmanageform/edit/' + id]) }
-  onDelete(id) {
+  onDelete(row) {
     if (confirm("Are you sure to delete ?")) {
-      const PhotoCount = 3;
-      for (let i = 0; i < PhotoCount; i++) {
-        firebase.storage().ref().child("/" + id + "/" + i + ".jpg").delete().then(function () {
+
+        firebase.storage().ref().child(row.imagepath).delete().then(function () {
           console.log("delete file")
         }).catch(function (error) {
           console.log(error)
         });
-      }
-      this.db.object('/CampusPhotos/' + id).remove().then(d => console.log(d)).catch(errors => console.log(errors));
+
+      this.db.object('/EventData/' + row.id).remove().then(d => console.log(d)).catch(errors => console.log(errors));
     }
   }
   setPage(pageInfo) {
