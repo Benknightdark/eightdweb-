@@ -24,7 +24,7 @@
       </div>
       <ng-template #ElseBlock>
         <div *ngIf=" this.ReadytoRemoveImageArray.indexOf(true)!=-1">
-          <image-upload [buttonCaption]="'更新活動照片(最多'+EditPageUploadImagesCount+'張)'" [dropBoxMessage]="'Drop Your DM'" (onFileUploadFinish)="imageUploaded($event)"
+          <image-upload [buttonCaption]="'更新活動照片(最多'+EditPageUploadImagesCount+'種)'" [dropBoxMessage]="'Drop Your DM'" (onFileUploadFinish)="imageUploaded($event)"
             (onRemove)="imageRemoved($event)" (isPending)="disableSendButton($event)" [max]="EditPageUploadImagesCount" [fileTooLargeMessage]="'圖片容量太大'">
           </image-upload>
         </div>
@@ -61,6 +61,10 @@
           <a class="btn waves-effect waves-light" [routerLink]="['/admin/campusphotosmanage']"><i class="material-icons left">cancel</i>返回</a>
         </div>
         <div *ngIf="RouteName == 'edit'">
+          <button class="btn waves-effect waves-light" type="submit" name="action">上傳
+          <i class="material-icons left">file_upload</i>
+
+        </button>
           <a class="btn waves-effect waves-light" [routerLink]="['/admin/campusphotosmanageform/detail',RouteParm]"><i class="material-icons left">pageview</i>明細</a>
           <a class="btn waves-effect waves-light" [routerLink]="['/admin/campusphotosmanage']"><i class="material-icons left">cancel</i>返回</a>
         </div>
