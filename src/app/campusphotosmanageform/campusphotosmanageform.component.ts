@@ -58,22 +58,7 @@ export class CampusphotosmanageformComponent implements OnInit {
           this.title = "營隊花絮編輯頁面";
           this.DisableButton = false;
           this.ReadytoRemoveImageArray = [false, false, false]
-          this.EditPageUploadImages = [{
-            no: 0,
-            IsEdit: "",
-            src: ""
-          },
-          {
-            no: 1,
-            IsEdit: "",
-            src: ""
-          },
-          {
-            no: 2,
-            IsEdit: "",
-            src: ""
-          },
-          ];
+          this.EditPageUploadImages = [{ no: 0, IsEdit: "", src: "" }, { no: 1, IsEdit: "", src: "" }, { no: 2, IsEdit: "", src: "" }];
           this.EditPageUploadImagesArray = [];
         }
         this.db.object('/CampusPhotos/' + this.RouteParm).subscribe(data => {
@@ -163,22 +148,7 @@ export class CampusphotosmanageformComponent implements OnInit {
                       ImageUrlArray: this.CampusEventPhotos.ImageUrlArray
                     }).then(data => {
                       this.ReadytoRemoveImageArray = [false, false, false]
-                      this.EditPageUploadImages = [{
-                        no: 0,
-                        IsEdit: "",
-                        src: ""
-                      },
-                      {
-                        no: 1,
-                        IsEdit: "",
-                        src: ""
-                      },
-                      {
-                        no: 2,
-                        IsEdit: "",
-                        src: ""
-                      },
-                      ];
+                      this.EditPageUploadImages = [{ no: 0, IsEdit: '', src: '' }, { no: 1, IsEdit: '', src: "" }, { no: 2, IsEdit: "", src: "" }];
                       this.EditPageUploadImagesArray = [];
                     })
                 })
