@@ -1,46 +1,41 @@
-import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
 import { UUID } from 'angular2-uuid';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs'
-import * as moment from 'moment';
-import { Page } from '../shared/serversidetable/page'
-import { CampushphotosmanageService } from "app/services/campushphotosmanage.service";
+
+import { Router } from '@angular/router';
+import { Page } from '../../shared/serversidetable/page';
+import { CampuseventmanageService } from '../../services/campuseventmanage.service';
+
 @Component({
-  selector: 'app-campusphotosmanage',
-  templateUrl: './campusphotosmanage.component.html',
-  styleUrls: ['./campusphotosmanage.component.css']
+  selector: 'app-campuseventmanage',
+  templateUrl: './campuseventmanage.component.html',
+  styleUrls: ['./campuseventmanage.component.css']
 })
-export class CampusphotosmanageComponent implements OnInit {
-  CampusEventPhotos = {
-    id: '',
-    Name: '',
-    ImageUrlArray: [],
-    GallaryUrl: "",
-    CreateTime: "",
-    UpdateTime: ""
-  }
-  ImageArray = []
-  isFinishSubmit: boolean = true;
+export class CampuseventmanageComponent implements OnInit {
+isFinishSubmit: boolean = true;
   uploadcount = 0
   rows;
   columns;
   showtable: boolean = false;
   page = new Page();
   loading: boolean = false;
-  constructor(private http: CampushphotosmanageService, private router: Router, private db: AngularFireDatabase) {
-  }
+
+  ShowEventData: Observable<any>
+  constructor(private http: CampuseventmanageService, private router: Router,private db: AngularFireDatabase) { }
+
   ngOnInit() {
-    this.http.GetAllDataCounts().subscribe(
+    this.ShowEventData = this.db.list("/EventData")
+
+      this.http.GetAllDataCounts().subscribe(
       totalElements => {
         this.page.pageNumber = 0;
         this.page.size = 10;
         this.page.totalElements = totalElements;
         this.columns = [
           { prop: 'id' },
-          { prop: 'Name', sortable: true },
+          { prop: 'title', sortable: true },
           { prop: 'CreateTime', sortable: true },
           { prop: 'UpdateTime', sortable: true },
         ];
@@ -48,19 +43,30 @@ export class CampusphotosmanageComponent implements OnInit {
       }
     );
   }
-  onDetail(id) { this.router.navigate(['/admin/campusphotosmanageform/detail/' + id]) }
-  onEdit(id) { this.router.navigate(['/admin/campusphotosmanageform/edit/' + id]) }
-  onDelete(id) {
+
+  onRemove(item) {
     if (confirm("Are you sure to delete ?")) {
-      const PhotoCount = 3;
-      for (let i = 0; i < PhotoCount; i++) {
-        firebase.storage().ref().child("/" + id + "/" + i + ".jpg").delete().then(function () {
+      const desertRef = firebase.storage().ref().child(item.imagepath);
+      desertRef.delete().then(function () {
+        console.log("delete file")
+      }).catch(function (error) {
+        console.log(error)
+      });
+      this.db.object('/EventData/' + item.id).remove();
+    }
+  }
+  onDetail(id) { this.router.navigate(['/admin/campuseventmanageform/detail/' + id]) }
+  onEdit(id) { this.router.navigate(['/admin/campuseventmanageform/edit/' + id]) }
+  onDelete(row) {
+    if (confirm("Are you sure to delete ?")) {
+
+        firebase.storage().ref().child(row.imagepath).delete().then(function () {
           console.log("delete file")
         }).catch(function (error) {
           console.log(error)
         });
-      }
-      this.db.object('/CampusPhotos/' + id).remove().then(d => console.log(d)).catch(errors => console.log(errors));
+
+      this.db.object('/EventData/' + row.id).remove().then(d => console.log(d)).catch(errors => console.log(errors));
     }
   }
   setPage(pageInfo) {
@@ -99,7 +105,11 @@ export class CampusphotosmanageComponent implements OnInit {
     }, 1000);
   }
   fistLetterUpper(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-  }
+    if(str!="title"){
+ return str.charAt(0).toUpperCase() + str.slice(1);
+    }else {
+      return str;
+    }
 
+  }
 }
