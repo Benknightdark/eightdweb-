@@ -23,6 +23,7 @@ import { PiechartComponent } from './piechart/piechart.component';
 import { LadarchartComponent } from './ladarchart/ladarchart.component';
 import { BarchartComponent } from './barchart/barchart.component';
 import { DynamiccomponentDirective } from '../shared/directives/dynamiccomponent.directive';
+import { CalendarComponent } from './calendar/calendar.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -49,7 +50,8 @@ import { DynamiccomponentDirective } from '../shared/directives/dynamiccomponent
      PiechartComponent,
     LadarchartComponent,
     BarchartComponent,
-DynamiccomponentDirective
+DynamiccomponentDirective,
+CalendarComponent
 
   ],
   entryComponents:[

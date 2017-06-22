@@ -44,6 +44,7 @@ ScreenWidth
       stopPropagation: true // Stops event propagation
     }
 
+
   );
   // this.displayComponent("LadarchartComponent")
   Observable.fromEvent(window, 'resize')
