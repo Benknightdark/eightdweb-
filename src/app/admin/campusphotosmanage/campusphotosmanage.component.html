@@ -1,6 +1,7 @@
 <div class="container" style="width:100%">
   <div class="rows">
     <h2>營隊花絮管理</h2>
+
   </div>
 
   <div class="preloader-wrapper big active" *ngIf="!showtable">
@@ -43,7 +44,10 @@
                 <i class="material-icons" (click)="onEdit(row.id)">edit</i>
                 <i class="material-icons" (click)="onDelete(row.id)">delete</i>
 
+
               </div>
+
+
             </ng-template>
               </ngx-datatable-column>
           </div>

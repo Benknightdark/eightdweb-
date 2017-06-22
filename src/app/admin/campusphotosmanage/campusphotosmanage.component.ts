@@ -34,6 +34,7 @@ export class CampusphotosmanageComponent implements OnInit {
   constructor(private http: CampushphotosmanageService, private router: Router, private db: AngularFireDatabase) {
   }
   ngOnInit() {
+
     this.http.GetAllDataCounts().subscribe(
       totalElements => {
         this.page.pageNumber = 0;
@@ -46,6 +47,8 @@ export class CampusphotosmanageComponent implements OnInit {
           { prop: 'UpdateTime', sortable: true },
         ];
         this.setPage({ offset: 0 });
+
+
       }
     );
   }
