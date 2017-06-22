@@ -21,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DynamiccomponentDirective } from './shared/directives/dynamiccomponent.directive';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +43,7 @@ import { DynamiccomponentDirective } from './shared/directives/dynamiccomponent.
     AngularFireDatabaseModule,
     FormsModule,
     BrowserAnimationsModule,
+
 
   ],
   providers: [AccountService, AccountGuard],

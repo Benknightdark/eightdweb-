@@ -10,7 +10,7 @@ export class DashboardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-     $('ul.tabs').tabs();
+
   }
 
 }
