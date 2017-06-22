@@ -34,6 +34,7 @@
     "@types/jasmine": "2.5.52",
     "@types/jquery": "^3.2.1",
     "@types/node": "~7.0.31",
+    "angular2-highcharts": "^0.5.5",
     "angular2-image-upload": "^0.6.1",
     "angular2-uuid": "^1.1.1",
     "angularfire2": "^4.0.0-rc0",
