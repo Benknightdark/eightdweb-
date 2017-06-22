@@ -17,6 +17,10 @@ import { environment } from '../../environments/environment';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from "angularfire2/auth";
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ChartsModule } from 'ng2-charts/ng2-charts';
+import { PiechartComponent } from './piechart/piechart.component';
+import { LadarchartComponent } from './ladarchart/ladarchart.component';
+import { BarchartComponent } from './barchart/barchart.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -27,7 +31,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     FormsModule,
     ImageUploadModule.forRoot(),
     NgxDatatableModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    ChartsModule
+
+
+
   ],
   declarations: [
     AdminlayoutComponent,
@@ -36,7 +44,17 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     CampusphotosmanageformComponent,
     CampuseventmanageformComponent,
     DashboardComponent,
+     PiechartComponent,
+    LadarchartComponent,
+    BarchartComponent
+
+
   ],
+  entryComponents:[
+ PiechartComponent,
+    LadarchartComponent,
+    BarchartComponent
+    ],
   providers: [CampushphotosmanageService, CampuseventmanageService],
 })
 export class AdminModule { }
