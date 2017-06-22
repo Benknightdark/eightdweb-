@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 
 @Component({
   selector: 'app-piechart',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./piechart.component.css']
 })
 export class PiechartComponent implements OnInit {
-
+@Input() title
   constructor() { }
 
   ngOnInit() {

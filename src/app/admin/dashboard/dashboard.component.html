@@ -1,11 +1,9 @@
+<div class="row">
+
+  <h3>DashBoard!Rock</h3>
 
 
-  <div class="row">
-
-      <h3>DashBoard!Rock</h3>
-
-
-  </div>
+</div>
 
 <section>
   <div class="row">
@@ -14,20 +12,20 @@
 
     <!-- Dropdown Structure -->
     <ul id='dropdown1' class='dropdown-content'>
-      <li *ngFor="let item of components" [value]="item.value" (click)="onSelectChart(item.value)">{{item.name}}</li>
+      <li *ngFor="let item of components" [value]="item.value" (click)="onSelectChart(item)">{{item.name}}</li>
 
     </ul>
   </div>
 </section>
-<section *ngIf="ShowAllCharts" >
+<section *ngIf="ShowAllCharts">
   <div class="row" style="padding-bottom:50px">
     <div class="col" [class.s4]="ScreenWidth>1500" [class.s12]="ScreenWidth<1500">
-      <app-piechart></app-piechart>
+      <app-piechart [title]="components[1]['name']"></app-piechart>
     </div>
-     <div class="col" [class.s4]="ScreenWidth>1500" [class.s12]="ScreenWidth<1500">
+    <div class="col" [class.s4]="ScreenWidth>1500" [class.s12]="ScreenWidth<1500">
       <app-ladarchart></app-ladarchart>
     </div>
-     <div class="col" [class.s4]="ScreenWidth>1500" [class.s12]="ScreenWidth<1500">
+    <div class="col" [class.s4]="ScreenWidth>1500" [class.s12]="ScreenWidth<1500">
       <app-barchart></app-barchart>
     </div>
   </div>

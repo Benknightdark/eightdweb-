@@ -57,18 +57,20 @@ ScreenWidth
 
       });
   }
-   displayComponent(componentName: string) {
+   displayComponent(item) {
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(
-      this.dynamicComponentService.getComponent(componentName));
+      this.dynamicComponentService.getComponent(item.value));
     const viewContainerRef = this.componentHost.viewContainerRef;
 
     viewContainerRef.clear();
     const componentRef = viewContainerRef.createComponent(componentFactory);
+      (componentRef.instance as any).title = item.name;
+
   }
-    onSelectChart(value){
-      if(value!="all"){
+    onSelectChart(item){
+      if(item.value!="all"){
           this.ShowAllCharts=false;
-          this.displayComponent(value)
+          this.displayComponent(item)
 
       }else{
         this.ShowAllCharts=true;
