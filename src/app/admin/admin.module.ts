@@ -16,6 +16,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from '../../environments/environment';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from "angularfire2/auth";
+import { DashboardComponent } from './dashboard/dashboard.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -34,6 +35,7 @@ import { AngularFireAuthModule } from "angularfire2/auth";
     CampusphotosmanageComponent,
     CampusphotosmanageformComponent,
     CampuseventmanageformComponent,
+    DashboardComponent,
   ],
   providers: [CampushphotosmanageService, CampuseventmanageService],
 })

@@ -5,10 +5,17 @@ import { Routes, RouterModule } from '@angular/router';
 import { CampuseventmanageComponent } from './campuseventmanage/campuseventmanage.component';
 import { CampusphotosmanageComponent } from './campusphotosmanage/campusphotosmanage.component';
 import { AdminlayoutComponent } from './adminlayout/adminlayout.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
   {
     path: 'admin', component: AdminlayoutComponent, children: [
+      {
+        path:'',component:DashboardComponent
+      },
+      {
+        path:'dashboard',component:DashboardComponent
+      },
       {
         path: 'campuseventmanage', component: CampuseventmanageComponent
       },

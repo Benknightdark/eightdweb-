@@ -14,7 +14,7 @@ export class AccountService {
       .then(a => {
         if (a.uid) {
           localStorage.setItem("token",a.uid)
-          this.router.navigate(["/admin/campuseventmanage"])
+          this.router.navigate(["/admin"])
         } else {
           confirm(a.message)
         }
@@ -26,7 +26,7 @@ export class AccountService {
   Logout() {
     this.afAuth.auth.signOut();
     localStorage.removeItem("token")
-    this.router.navigate(["/login"])
+    this.router.navigate(["/"])
 
   }
 
