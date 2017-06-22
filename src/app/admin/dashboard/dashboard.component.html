@@ -23,10 +23,10 @@
       <app-piechart [title]="components[1]['name']"></app-piechart>
     </div>
     <div class="col" [class.s4]="ScreenWidth>1500" [class.s12]="ScreenWidth<1500">
-      <app-ladarchart></app-ladarchart>
+      <app-ladarchart [title]="components[2]['name']"></app-ladarchart>
     </div>
     <div class="col" [class.s4]="ScreenWidth>1500" [class.s12]="ScreenWidth<1500">
-      <app-barchart></app-barchart>
+      <app-barchart [title]="components[3]['name']"></app-barchart>
     </div>
   </div>
 </section>

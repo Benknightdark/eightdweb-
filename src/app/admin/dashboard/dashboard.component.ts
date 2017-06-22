@@ -59,13 +59,11 @@ ScreenWidth
   }
    displayComponent(item) {
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(
-      this.dynamicComponentService.getComponent(item.value));
+    this.dynamicComponentService.getComponent(item.value));
     const viewContainerRef = this.componentHost.viewContainerRef;
-
     viewContainerRef.clear();
     const componentRef = viewContainerRef.createComponent(componentFactory);
-      (componentRef.instance as any).title = item.name;
-
+    (componentRef.instance as any).title = item.name;
   }
     onSelectChart(item){
       if(item.value!="all"){
