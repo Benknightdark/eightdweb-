@@ -1,19 +1,41 @@
-<section>
+
 
   <div class="row">
-    <div class="col s12">
-      <h1>DashBoard!Rock</h1>
-    </div>
 
+      <h3>DashBoard!Rock</h3>
 
 
   </div>
 
+<section>
+  <div class="row">
+    <!-- Dropdown Trigger -->
+    <a class='dropdown-button btn' href='#' data-activates='dropdown1'>篩選圖表</a>
+
+    <!-- Dropdown Structure -->
+    <ul id='dropdown1' class='dropdown-content'>
+      <li *ngFor="let item of components" [value]="item.value" (click)="onSelectChart(item.value)">{{item.name}}</li>
+
+    </ul>
+  </div>
+</section>
+<section *ngIf="ShowAllCharts" >
+  <div class="row" style="padding-bottom:50px">
+    <div class="col" [class.s4]="ScreenWidth>1500" [class.s12]="ScreenWidth<1500">
+      <app-piechart></app-piechart>
+    </div>
+     <div class="col" [class.s4]="ScreenWidth>1500" [class.s12]="ScreenWidth<1500">
+      <app-ladarchart></app-ladarchart>
+    </div>
+     <div class="col" [class.s4]="ScreenWidth>1500" [class.s12]="ScreenWidth<1500">
+      <app-barchart></app-barchart>
+    </div>
+  </div>
 </section>
 <section>
   <div class="row" style="padding-bottom:50px">
-    <div class="col s4">
- <ng-template appDynamiccomponent></ng-template>
+    <div class="col s4" [class.s4]="ScreenWidth>1500" [class.s12]="ScreenWidth<1500">
+      <ng-template appDynamiccomponent></ng-template>
     </div>
   </div>
 </section>
