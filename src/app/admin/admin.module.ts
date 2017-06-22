@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CampusphotosmanageformComponent } from './campusphotosmanageform/campusphotosmanageform.component';
 import { CampushphotosmanageService } from '../services/campushphotosmanage.service';
+import { DynamicchartService } from '../services/dynamicchart.service';
 import { CampuseventmanageformComponent } from './campuseventmanageform/campuseventmanageform.component';
 import { CampuseventmanageService } from '../services/campuseventmanage.service';
 import { CampuseventmanageComponent } from './campuseventmanage/campuseventmanage.component';
@@ -21,6 +22,7 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { PiechartComponent } from './piechart/piechart.component';
 import { LadarchartComponent } from './ladarchart/ladarchart.component';
 import { BarchartComponent } from './barchart/barchart.component';
+import { DynamiccomponentDirective } from '../shared/directives/dynamiccomponent.directive';
 @NgModule({
   imports: [
     CommonModule,
@@ -46,8 +48,8 @@ import { BarchartComponent } from './barchart/barchart.component';
     DashboardComponent,
      PiechartComponent,
     LadarchartComponent,
-    BarchartComponent
-
+    BarchartComponent,
+DynamiccomponentDirective
 
   ],
   entryComponents:[
@@ -55,6 +57,6 @@ import { BarchartComponent } from './barchart/barchart.component';
     LadarchartComponent,
     BarchartComponent
     ],
-  providers: [CampushphotosmanageService, CampuseventmanageService],
+  providers: [CampushphotosmanageService, CampuseventmanageService, DynamicchartService],
 })
 export class AdminModule { }
