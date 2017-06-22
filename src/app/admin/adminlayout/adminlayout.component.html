@@ -14,17 +14,17 @@
   <li>
     <div class="logo">
       <div class="background">
-        <img src="http://dl.stickershop.line.naver.jp/products/0/0/1/1218851/android/stickers/8886062.png" style="padding-left: 20px">
+        <img class="responsive-img" src="http://dl.stickershop.line.naver.jp/products/0/0/1/1218851/android/stickers/8886062.png" style="padding-left: 20px">
       </div>
     </div>
   </li>
-  <li ><a [routerLink]="['/admin/dashboard']" [routerLinkActive]="'ActiveRoute'"><i class="material-icons" style="margin: 0 5px 0 0;">insert_chart</i>儀表版</a></li>
-  <li routerLinkActive="active"><a [routerLink]="['/admin/campuseventmanage']" [routerLinkActive]="'ActiveRoute'"><i class="material-icons" style="margin: 0 5px 0 0;">settings</i>營隊活動管理</a></li>
-  <li routerLinkActive="active"><a [routerLink]="['/admin/campusphotosmanage']" [routerLinkActive]="'ActiveRoute'"><i class="material-icons" style="margin: 0 5px 0 0;">settings_applications</i>營隊花絮管理</a></li>
+  <li><a [routerLink]="['/admin/dashboard']" [routerLinkActive]="'ActiveRoute'"><i class="material-icons" style="margin: 0 5px 0 0;">insert_chart</i>儀表版</a></li>
+  <li><a [routerLink]="['/admin/campuseventmanage']" [routerLinkActive]="'ActiveRoute'"><i class="material-icons" style="margin: 0 5px 0 0;">settings</i>營隊活動管理</a></li>
+  <li><a [routerLink]="['/admin/campusphotosmanage']" [routerLinkActive]="'ActiveRoute'"><i class="material-icons" style="margin: 0 5px 0 0;">settings_applications</i>營隊花絮管理</a></li>
   <li style="padding-left: 32px;"><button type="button" class="waves-effect waves-light btn" (click)="onClick()">登出</button></li>
 </ul>
 <main [class.MobileUI]="ScreenWidth<992" [class.DesktopUI]="ScreenWidth>992">
-  <div class="container" style="">
+  <div class="container">
     <router-outlet> </router-outlet>
   </div>
 </main>
