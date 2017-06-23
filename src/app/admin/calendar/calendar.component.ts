@@ -27,7 +27,7 @@ export class CalendarComponent implements OnInit {
 
   }
   ShowCal() {
-    //  this.Calenderloading = !this.Calenderloading
+    this.Calenderloading = !this.Calenderloading
     this.db.list("AdminEvents/" + moment(this.DefaultDate).format("YYYY-MM")).subscribe(events => {
 
       console.log(events)
@@ -40,24 +40,32 @@ export class CalendarComponent implements OnInit {
         selectable: true,
         selectHelper: true,
         select: function (start, end) {
+          console.log(start, end)
           const title = prompt('Event Title:');
-          const startdate = prompt('startdate:', moment(start._d).format("YYYY-MM-DD"));
-          const enddate = prompt('enddate:', moment(end._d).format("YYYY-MM-DD"));
+          // const startdate = prompt('startdate:', moment(start._d).format("YYYY-MM-DD"));
+          // const enddate = prompt('enddate:', moment(end._d).format("YYYY-MM-DD"));
           let eventData
           if (title) {
             eventData = {
               title: title,
-              start: startdate,
-              end: enddate
+              start: moment(start._d).format("YYYY-MM-DD"),
+              end: moment(end._d).format("YYYY-MM-DD")
             };
             events.push(eventData)
-            console.log( moment(eventData.start).format("YYYY-MM"))
+            console.log(moment(eventData.start).format("YYYY-MM"))
             firebase.database().ref("AdminEvents" + "/" + moment(eventData.start).format("YYYY-MM")).set(
               events
-            ).then( $('#calendar').fullCalendar('renderEvent', eventData, true)); // stick? = true)
+            ).then(
+              a => {
+                $('#calendar').fullCalendar('renderEvent', eventData, true)
+              }
+
+              ); // stick? = true)
 
           }
           $('#calendar').fullCalendar('unselect');
+
+          this.Calenderloading = false;
         },
         title: moment(this.DefaultDate).format("YYYY-MM"),
         defaultDate: moment(this.DefaultDate).format("YYYY-MM-DD"),
@@ -70,7 +78,7 @@ export class CalendarComponent implements OnInit {
 
 
 
-      //   this.Calenderloading = !this.Calenderloading
+      this.Calenderloading = false;
     })
 
   }
