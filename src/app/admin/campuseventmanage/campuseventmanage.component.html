@@ -20,7 +20,7 @@
       <a class="waves-effect waves-light btn" [routerLink]="['/admin/campuseventmanageform/create']"><i class="material-icons left">add</i>新增營隊活動</a>
     </div>
 
-    <ngx-datatable class="material fullscreen" [columnMode]="'standard'" [scrollbarH]="true" [rows]="rows" [columns]="columns"
+    <ngx-datatable class="material fullscreen bordered" [columnMode]="'standard'" [scrollbarH]="true" [rows]="rows" [columns]="columns"
       [footerHeight]="50" [rowHeight]="'auto'" [externalPaging]="true" [count]="page.totalElements" [offset]="page.pageNumber"
       [limit]="page.size" (page)='setPage($event)'
          [externalSorting]="true"
