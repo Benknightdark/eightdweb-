@@ -22,17 +22,13 @@
       <a class="waves-effect waves-light btn" [routerLink]="['/admin/campusphotosmanageform/create']"><i class="material-icons left">add</i>新增營隊花絮</a>
     </div>
 
-    <ngx-datatable class="material fullscreen striped datatable-row-odd" [columnMode]="'force'" [scrollbarH]="true" [rows]="rows" [columns]="columns"
-      [footerHeight]="50" [rowHeight]="'auto'" [externalPaging]="true" [count]="page.totalElements" [offset]="page.pageNumber"
-      [limit]="page.size" (page)='setPage($event)'
-         [externalSorting]="true"
-        [loadingIndicator]="loading"
-        (sort)="onSort($event)"
-      >
+    <ngx-datatable class="material fullscreen striped datatable-row-odd" [columnMode]="'force'" [scrollbarH]="true" [rows]="rows"
+      [columns]="columns" [footerHeight]="50" [rowHeight]="'auto'" [externalPaging]="true" [count]="page.totalElements" [offset]="page.pageNumber"
+      [limit]="page.size" (page)='setPage($event)' [externalSorting]="true" [loadingIndicator]="loading" (sort)="onSort($event)">
       <div *ngFor="let c of columns">
 
-          <div *ngIf="c.prop=='id'  else elseBlock">
-               <ngx-datatable-column name="">
+        <div *ngIf="c.prop=='id'  else elseBlock">
+          <ngx-datatable-column name="">
             <ng-template let-row="row" ngx-datatable-cell-template>
 
               <div style=" display: flex;
@@ -49,15 +45,15 @@
 
 
             </ng-template>
-              </ngx-datatable-column>
-          </div>
-          <ng-template #elseBlock>
-            <ngx-datatable-column [name]="c.prop">
-              <ng-template let-row="row" ngx-datatable-cell-template>
-                {{row[c.prop]}}
-              </ng-template>
-            </ngx-datatable-column>
-          </ng-template>
+          </ngx-datatable-column>
+        </div>
+        <ng-template #elseBlock>
+          <ngx-datatable-column [name]="c.prop">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              {{row[c.prop]}}
+            </ng-template>
+          </ngx-datatable-column>
+        </ng-template>
 
       </div>
     </ngx-datatable>
