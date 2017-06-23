@@ -24,7 +24,7 @@ import { LadarchartComponent } from './ladarchart/ladarchart.component';
 import { BarchartComponent } from './barchart/barchart.component';
 import { DynamiccomponentDirective } from '../shared/directives/dynamiccomponent.directive';
 import { CalendarComponent } from './calendar/calendar.component';
-import { CalendarmodalComponent } from './calendarmodal/calendarmodal.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -52,8 +52,8 @@ import { CalendarmodalComponent } from './calendarmodal/calendarmodal.component'
     LadarchartComponent,
     BarchartComponent,
     DynamiccomponentDirective,
-    CalendarComponent,
-    CalendarmodalComponent
+    CalendarComponent
+
 
   ],
   entryComponents: [

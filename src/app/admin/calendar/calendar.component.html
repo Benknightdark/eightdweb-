@@ -1,3 +1,11 @@
-<app-calendarmodal [StartDate]="StartDate"  (Events)="HandleAddEvent($event)"></app-calendarmodal>
-  <input type="date" class="datepicker" [(ngModel)]="DefaultDate" (change)="GetNewEvents()">
-	<div id='calendar'></div>
+<i class="material-icons" (click)=" NavigaeMonth(-1)">keyboard_arrow_left</i>
+<span>{{DefaultDate}}</span>
+<i class="material-icons" (click)=" NavigaeMonth(1)">keyboard_arrow_right</i>
+<div *ngIf="Calenderloading" >
+  <div class="progress">
+      <div class="indeterminate"></div>
+  </div>
+</div>
+
+<div id='calendar'></div>
+
