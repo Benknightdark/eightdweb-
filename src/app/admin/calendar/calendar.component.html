@@ -1,3 +1,3 @@
-<app-calendarmodal  (Events)="HandleAddEvent($event)"></app-calendarmodal>
+<app-calendarmodal [StartDate]="StartDate"  (Events)="HandleAddEvent($event)"></app-calendarmodal>
   <input type="date" class="datepicker" [(ngModel)]="DefaultDate" (change)="GetNewEvents()">
 	<div id='calendar'></div>

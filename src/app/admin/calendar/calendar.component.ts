@@ -11,6 +11,7 @@ export class CalendarComponent implements OnInit {
   addevents = []
   addevent;
   StartDate;
+  AddEventData;
   constructor(private db: AngularFireDatabase) { }
 
   ngOnInit() {
@@ -36,18 +37,33 @@ export class CalendarComponent implements OnInit {
         selectable: true,
         selectHelper: true,
         select: function (start, end) {
-          this.StartDate = start._i;
-          console.log(this.StartDate)
-          $('#modal1').modal('open');
+
+          //
+          // $('#modal1').modal('open');
+          //console.log(this.AddEventData)
+          console.log(start)
+          const title = prompt('Event Title:');
+          const startdate = prompt('startdate:', moment(start._d).format("YYYY-MM-DD"));
+          const enddate = prompt('enddate:',moment(end._d).format("YYYY-MM-DD"));
+          let eventData
+          if (title) {
+            eventData = {
+              title: title,
+              start: startdate,
+              end: enddate
+            };
+            $('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
+          }
+          $('#calendar').fullCalendar('unselect');
+
           //$('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
           //$('#calendar').fullCalendar('unselect');
+
         },
         title: moment(this.DefaultDate).format("YYYY-MM"),
         defaultDate: moment(this.DefaultDate).format("YYYY-MM-DD"),
         navLinks: true, // can click day/week names to navigate views
-        viewRender: function (view, element) {
-          console.log(view.currentRange.start._i)
-        },
+
         editable: true,
         eventLimit: true, // allow "more" link when too many events
         events: events
@@ -57,7 +73,10 @@ export class CalendarComponent implements OnInit {
 
   }
   HandleAddEvent(AddEvent) {
-    console.log(AddEvent.title)
+    //  console.log(this.StartDate)
+    // console.log(AddEvent)
+    // this.AddEventData=AddEvent
+    console.log(this.AddEventData)
     // const monthSource = { title: "", start: start, end: end }
     // monthSource.title = 'MONTH'; // this should be string
     // monthSource.start = moment(this.DefaultDate).format("YYYY-MM-DD"); // this should be date object
@@ -67,6 +86,7 @@ export class CalendarComponent implements OnInit {
 
     // $('#calendar').fullCalendar('rerenderEvents');
   }
+
 
 
 }
