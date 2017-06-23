@@ -9,12 +9,14 @@ import { AngularFireDatabase } from 'angularfire2/database';
 export class CalendarComponent implements OnInit {
   DefaultDate
   addevents = []
-  addevent
+  addevent;
+  StartDate;
   constructor(private db: AngularFireDatabase) { }
 
   ngOnInit() {
     this.DefaultDate = new Date()
     this.ShowCal();
+
 
   }
   GetNewEvents() {
@@ -31,6 +33,15 @@ export class CalendarComponent implements OnInit {
           center: 'title',
           right: 'month,agendaWeek,agendaDay'
         },
+        selectable: true,
+        selectHelper: true,
+        select: function (start, end) {
+          this.StartDate = start._i;
+          console.log(this.StartDate)
+          $('#modal1').modal('open');
+          //$('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
+          //$('#calendar').fullCalendar('unselect');
+        },
         title: moment(this.DefaultDate).format("YYYY-MM"),
         defaultDate: moment(this.DefaultDate).format("YYYY-MM-DD"),
         navLinks: true, // can click day/week names to navigate views
@@ -41,20 +52,20 @@ export class CalendarComponent implements OnInit {
         eventLimit: true, // allow "more" link when too many events
         events: events
       });
-       this.addevents = events
+      this.addevents = events
     })
 
   }
-  AddEvent() {
+  HandleAddEvent(AddEvent) {
+    console.log(AddEvent.title)
+    // const monthSource = { title: "", start: start, end: end }
+    // monthSource.title = 'MONTH'; // this should be string
+    // monthSource.start = moment(this.DefaultDate).format("YYYY-MM-DD"); // this should be date object
+    // monthSource.end = moment(this.DefaultDate).format("YYYY-MM-DD")
+    // this.addevents.push(monthSource)
+    // $('#calendar').fullCalendar('addEventSource', this.addevents);
 
-    const monthSource = { title: "", start: "", end: "" }
-    monthSource.title = 'MONTH'; // this should be string
-    monthSource.start = moment(this.DefaultDate).format("YYYY-MM-DD"); // this should be date object
-    monthSource.end = moment(this.DefaultDate).format("YYYY-MM-DD")
-    this.addevents.push(monthSource)
-    $('#calendar').fullCalendar('addEventSource', this.addevents);
-
-    $('#calendar').fullCalendar('rerenderEvents');
+    // $('#calendar').fullCalendar('rerenderEvents');
   }
 
 

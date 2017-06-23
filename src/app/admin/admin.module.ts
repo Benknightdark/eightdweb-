@@ -24,6 +24,7 @@ import { LadarchartComponent } from './ladarchart/ladarchart.component';
 import { BarchartComponent } from './barchart/barchart.component';
 import { DynamiccomponentDirective } from '../shared/directives/dynamiccomponent.directive';
 import { CalendarComponent } from './calendar/calendar.component';
+import { CalendarmodalComponent } from './calendarmodal/calendarmodal.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -47,18 +48,19 @@ import { CalendarComponent } from './calendar/calendar.component';
     CampusphotosmanageformComponent,
     CampuseventmanageformComponent,
     DashboardComponent,
-     PiechartComponent,
+    PiechartComponent,
     LadarchartComponent,
     BarchartComponent,
-DynamiccomponentDirective,
-CalendarComponent
+    DynamiccomponentDirective,
+    CalendarComponent,
+    CalendarmodalComponent
 
   ],
-  entryComponents:[
- PiechartComponent,
+  entryComponents: [
+    PiechartComponent,
     LadarchartComponent,
     BarchartComponent
-    ],
+  ],
   providers: [CampushphotosmanageService, CampuseventmanageService, DynamicchartService],
 })
 export class AdminModule { }
