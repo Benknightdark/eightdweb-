@@ -8,19 +8,16 @@ import { AngularFireDatabase } from 'angularfire2/database';
 })
 export class CalendarComponent implements OnInit {
   DefaultDate
+  addevents = []
+  addevent
   constructor(private db: AngularFireDatabase) { }
 
   ngOnInit() {
-    //     $('.datepicker').pickadate({
-    //   selectMonths: true, // Creates a dropdown to control month
-    //   selectYears: 15 // Creates a dropdown of 15 years to control year
-    // });
-    // const DefaultDate = '2017-05-12'
     this.DefaultDate = new Date()
     this.ShowCal();
 
   }
-  GetDate() {
+  GetNewEvents() {
     console.log((moment(this.DefaultDate).format("YYYY-MM")))
     $('#calendar').fullCalendar('destroy')
     this.ShowCal();
@@ -29,6 +26,12 @@ export class CalendarComponent implements OnInit {
     this.db.list("AdminEvents/" + moment(this.DefaultDate).format("YYYY-MM")).subscribe(events => {
       console.log(events)
       $('#calendar').fullCalendar({
+        header: {
+          left: '',
+          center: 'title',
+          right: 'month,agendaWeek,agendaDay'
+        },
+        title: moment(this.DefaultDate).format("YYYY-MM"),
         defaultDate: moment(this.DefaultDate).format("YYYY-MM-DD"),
         navLinks: true, // can click day/week names to navigate views
         viewRender: function (view, element) {
@@ -38,9 +41,21 @@ export class CalendarComponent implements OnInit {
         eventLimit: true, // allow "more" link when too many events
         events: events
       });
+       this.addevents = events
     })
-  }
 
+  }
+  AddEvent() {
+
+    const monthSource = { title: "", start: "", end: "" }
+    monthSource.title = 'MONTH'; // this should be string
+    monthSource.start = moment(this.DefaultDate).format("YYYY-MM-DD"); // this should be date object
+    monthSource.end = moment(this.DefaultDate).format("YYYY-MM-DD")
+    this.addevents.push(monthSource)
+    $('#calendar').fullCalendar('addEventSource', this.addevents);
+
+    $('#calendar').fullCalendar('rerenderEvents');
+  }
 
 
 }

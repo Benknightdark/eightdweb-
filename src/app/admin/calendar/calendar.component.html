@@ -1,3 +1,5 @@
-  <input type="date" class="datepicker" [(ngModel)]="DefaultDate" (change)="GetDate()">
+  <input type="date" class="datepicker" [(ngModel)]="DefaultDate" (change)="GetNewEvents()">
+  <button (click)="AddEvent()">text</button>
+
   {{DefaultDate}}
 	<div id='calendar'></div>
