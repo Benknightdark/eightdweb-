@@ -2,7 +2,7 @@
   <div class="section">
     <div *ngIf="isShowEvent">
       <div class="row" *ngIf="ShowEventData.length>0">
-        <div class="col" [class.s4]="ScreenWidth>1200" [class.s12]="ScreenWidth<1200" *ngFor="let item of ShowEventData">
+        <div class="col" [class.s5]="ScreenWidth>1200" [class.s12]="ScreenWidth<1200" *ngFor="let item of ShowEventData">
           <div>
             <div class="card">
               <div class="card-image waves-effect waves-block waves-light">
@@ -15,8 +15,8 @@
                 <span class="card-title grey-text text-darken-4">{{item?.title}}<i class="material-icons right">close</i></span>
                 <div [innerText]="item?.content"></div>
               </div>
-              <div class="card-action">
-                <button class="btn waves-effect waves-light" type="submit" name="action" (click)="onSignUpEvent(item?.websignurl)">報名活動
+              <div class="card-action center">
+                <button class="btn waves-effect waves-light red" type="submit" name="action" (click)="onSignUpEvent(item?.websignurl)">報名活動
                   <i class="material-icons right">send</i>
                 </button>
                 <button class="btn waves-effect waves-light" type="submit" name="action" (click)="onShareEvent(item?.websignurl)">分享活動
