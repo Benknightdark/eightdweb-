@@ -24,6 +24,7 @@ import { LadarchartComponent } from './ladarchart/ladarchart.component';
 import { BarchartComponent } from './barchart/barchart.component';
 import { DynamiccomponentDirective } from '../shared/directives/dynamiccomponent.directive';
 import { CalendarComponent } from './calendar/calendar.component';
+import { ClockComponent } from './clock/clock.component';
 
 @NgModule({
   imports: [
@@ -52,7 +53,8 @@ import { CalendarComponent } from './calendar/calendar.component';
     LadarchartComponent,
     BarchartComponent,
     DynamiccomponentDirective,
-    CalendarComponent
+    CalendarComponent,
+    ClockComponent
 
   ],
   entryComponents: [
