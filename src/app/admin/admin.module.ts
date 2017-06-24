@@ -54,7 +54,6 @@ import { CalendarComponent } from './calendar/calendar.component';
     DynamiccomponentDirective,
     CalendarComponent
 
-
   ],
   entryComponents: [
     PiechartComponent,

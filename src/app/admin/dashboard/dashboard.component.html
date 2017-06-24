@@ -19,20 +19,20 @@
 </section>
 <section *ngIf="ShowAllCharts">
   <div class="row" style="padding-bottom:50px">
-    <div class="col" [class.s4]="ScreenWidth>1500" [class.s12]="ScreenWidth<1500">
+    <div class="col" [class.s4]="ScreenWidth>1200" [class.s12]="ScreenWidth<1200">
       <app-piechart [title]="components[1]['name']"></app-piechart>
     </div>
-    <div class="col" [class.s4]="ScreenWidth>1500" [class.s12]="ScreenWidth<1500">
+    <div class="col" [class.s4]="ScreenWidth>1200" [class.s12]="ScreenWidth<1200">
       <app-ladarchart [title]="components[2]['name']"></app-ladarchart>
     </div>
-    <div class="col" [class.s4]="ScreenWidth>1500" [class.s12]="ScreenWidth<1500">
+    <div class="col" [class.s4]="ScreenWidth>1200" [class.s12]="ScreenWidth<1200">
       <app-barchart [title]="components[3]['name']"></app-barchart>
     </div>
   </div>
 </section>
 <section>
   <div class="row" style="padding-bottom:50px">
-    <div class="col s4" [class.s4]="ScreenWidth>1500" [class.s12]="ScreenWidth<1500">
+    <div class="col s4" [class.s4]="ScreenWidth>1200" [class.s12]="ScreenWidth<1200">
       <ng-template appDynamiccomponent></ng-template>
     </div>
   </div>
