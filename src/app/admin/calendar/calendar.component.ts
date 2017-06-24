@@ -37,6 +37,7 @@ export class CalendarComponent implements OnInit {
           center: 'title',
           right: 'month,agendaWeek,agendaDay'
         },
+        titleFormat: "["+moment().format("YYYY-MM-DD:ddd")+"]",
         selectable: true,
         selectHelper: true,
         select: function (start, end) {
