@@ -2,18 +2,6 @@
   <div class="section">
     <div class="row">
       <div *ngIf="showphotos">
-<<<<<<< HEAD
-        <div class="col center" *ngFor="let cp of CampusPhotos"
-        [class.s4]="ScreenWidth>1200" [class.s12]="ScreenWidth<1200"
-        >
-        <!--<div class="card" style="margin:0;  box-shadow: none !important;">
-          <div class="card-image">
-             <img src="./assets/images/Banner.png" alt="">
-          <span class="card-title black-text"><strong>{{cp?.Name}}</strong></span>
-          </div>
-        </div>-->
-         <h5 class="black-text center">{{cp?.Name}}</h5>
-=======
         <div class="col center" *ngFor="let cp of CampusPhotos" [class.s4]="ScreenWidth>1200" [class.s12]="ScreenWidth<1200">
           <!-- <div class="card" *ngIf="ScreenWidth>1000" style="margin:0;  box-shadow: none !important;">
             <div class="card-image">
@@ -24,7 +12,6 @@
           <h5 class="black-text center s12" *ngIf="ScreenWidth<1000">{{cp?.Name}}</h5> -->
 
           <h5 class="black-text center">{{cp?.Name}}</h5>
->>>>>>> 984150199dc8d56790cb87a45aa201151b09eef5
           <div class="carousel carousel-slider center">
             <div *ngFor="let img of cp.ImageUrlArray;let i=index">
               <a class="carousel-item">
