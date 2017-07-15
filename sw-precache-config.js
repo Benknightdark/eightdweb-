@@ -7,5 +7,10 @@ module.exports = {
     'dist/**.js',
     'dist/**.css',
     'dist/assets/**'
-  ]
+  ],
+  stripPrefix: 'dist/',
+  runtimeCaching: [{
+    urlPattern: /this\\.is\\.a\\.regex/,
+    handler: 'networkFirst'
+  }]
 };
