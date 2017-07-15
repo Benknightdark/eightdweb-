@@ -4,7 +4,7 @@ interface NodeModule {
   id: string;
 }
 declare var System: any;
-declare  var $: any
+//declare  var $: any
 interface JQuery{
 
 }
