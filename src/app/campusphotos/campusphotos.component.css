@@ -6,17 +6,8 @@
     padding: 0 0.5rem;
 }
 
-.wrap {
-    position:relative; /* make this relative to have the inner div absolute without     breaking out */
-    width: 200px;  /* fix the width or else it'll be the entire page's width */
 
-}
 
-.wrap-text {
-    position: absolute;
-    width: 40px;
-    right: 0;
-    top: 0;
-    bottom: 0;
 
-}
+
+
