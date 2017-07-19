@@ -1,4 +1,5 @@
 module.exports = {
+  cacheId:"EightdCache",
   navigateFallback: '/index.html',
   stripPrefix: 'dist',
   root: 'dist/',
@@ -10,7 +11,7 @@ module.exports = {
   ],
   stripPrefix: 'dist/',
   runtimeCaching: [{
-    urlPattern: /this\\.is\\.a\\.regex/,
+    urlPattern: "https://firebasestorage.googleapis.com",
     handler: 'networkFirst'
   }]
 };
