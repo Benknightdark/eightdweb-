@@ -8,10 +8,7 @@
     "build": "ng build --aot --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "sw": "sw-precache --root=dist --config=sw-precache-config.js",
-    "pd": "npm run build;npm run sw;firebase deploy",
-    "jsonserver": "npm run build;npm run sw;json-server db.json --static ./dist"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
@@ -56,7 +53,6 @@
     "moment": "^2.18.1",
     "ng2-charts": "^1.6.0",
     "protractor": "~5.1.2",
-    "sw-precache": "^5.2.0",
     "textillate": "^0.4.1",
     "ts-node": "^3.3.0",
     "tslint": "~5.5.0",
