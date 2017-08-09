@@ -18,7 +18,7 @@ import { LoginComponent } from './login/login.component';
 import { AccountService } from './services/account.service';
 import { AccountGuard } from './guard/account.guard';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import {ServiceWorkerModule} from '@angular/service-worker'
 
 
 
@@ -43,6 +43,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AngularFireDatabaseModule,
     FormsModule,
     BrowserAnimationsModule,
+    ServiceWorkerModule
 
 
   ],
