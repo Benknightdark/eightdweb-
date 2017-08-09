@@ -28,9 +28,9 @@
   <script src="assets/textillate/jquery.fittext.js"></script>
   <script src="assets/textillate/jquery.lettering.js"></script>
   <script src="assets/textillate/jquery.textillate.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
-
+  <!-- <script src="sw-register.{HASH}.bundle.js"></script> -->
 </body>
 <div id="fb-root"></div>
 <script>
@@ -45,55 +45,56 @@
 
 </script>
 <script>
- /* if ('serviceWorker' in navigator) {
-     navigator.serviceWorker
-       .register('/service-worker.js')
-       .then(function () {
-         console.log('Service Worker Registered');
-       });
-   }*/
-if ('serviceWorker' in navigator) {
+  /* if ('serviceWorker' in navigator) {
+       navigator.serviceWorker
+         .register('/service-worker.js')
+         .then(function () {
+           console.log('Service Worker Registered');
+         });
+     }*/
+  //if ('serviceWorker' in navigator) {
 
-navigator.serviceWorker.register('/service-worker.js').then(function(reg) {
-    if (!navigator.serviceWorker.controller) {
-      return;
-    }
+  // navigator.serviceWorker.register('/service-worker.js').then(function(reg) {
+  //     if (!navigator.serviceWorker.controller) {
+  //       return;
+  //     }
 
-    if (reg.waiting) {
-      console.log("inside reg.waiting");
-      return;
-    }
+  //     if (reg.waiting) {
+  //       console.log("inside reg.waiting");
+  //       return;
+  //     }
 
-    if (reg.installing) {
-      console.log("inside reg.installing");
-      return;
-    }
+  //     if (reg.installing) {
+  //       console.log("inside reg.installing");
+  //       return;
+  //     }
 
-    reg.addEventListener('updatefound', function() {
-      console.log("inside updatefound");
-      let worker = reg.installing;
-      worker.addEventListener('statechange', function() {
+  //     reg.addEventListener('updatefound', function() {
+  //       console.log("inside updatefound");
+  //       let worker = reg.installing;
+  //       worker.addEventListener('statechange', function() {
 
-        if (worker.state == 'installed') {
-          console.log('Is installed');
-          // Here you can notify the user, that a new version exist.
-              // Show a toast view, asking the user to upgrade.
-              // The user accepts.
-              // Send a message to the sw, to skip wating.
-              worker.postMessage({action: 'skipWaiting'});
+  //         if (worker.state == 'installed') {
+  //           console.log('Is installed');
+  //           // Here you can notify the user, that a new version exist.
+  //               // Show a toast view, asking the user to upgrade.
+  //               // The user accepts.
+  //               // Send a message to the sw, to skip wating.
+  //               worker.postMessage({action: 'skipWaiting'});
 
-        }
-      });
-    });
-  });
+  //         }
+  //       });
+  //     });
+  //   });
 
-// You need to listen for a messages
-self.addEventListener('message', function(event) {
-  if (event.data.action === 'skipWaiting') {
-    self.skipWaiting();
-  }
-});
-}
+  // // You need to listen for a messages
+  // self.addEventListener('message', function(event) {
+  //   if (event.data.action === 'skipWaiting') {
+  //     self.skipWaiting();
+  //   }
+  // });
+  // }
+
 </script>
 
 </html>
