@@ -21,7 +21,6 @@
     "styles": [
       "styles.css",
       "../node_modules/materialize-css/dist/css/materialize.min.css",
-
       "../node_modules/flipclock/compiled/flipclock.css",
       "../node_modules/textillate/assets/animate.css",
       "../node_modules/fullcalendar/dist/fullcalendar.min.css"
@@ -29,7 +28,8 @@
 
     ],
     "scripts": [
-            "../node_modules/materialize-css/dist/js/materialize.min.js",
+      "../node_modules/jquery/dist/jquery.min.js",
+      "../node_modules/materialize-css/dist/js/materialize.min.js",
       "../node_modules/flipclock/compiled/flipclock.min.js",
       "../node_modules/moment/min/moment.min.js",
       "../node_modules/fullcalendar/dist/fullcalendar.min.js",
