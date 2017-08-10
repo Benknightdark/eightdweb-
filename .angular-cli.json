@@ -3,43 +3,53 @@
   "project": {
     "name": "eightdweb"
   },
-  "apps": [
-    {
-      "root": "src",
-      "outDir": "dist",
-      "assets": [
-        "assets",
-        "favicon.ico"
-      ],
-      "index": "index.html",
-      "main": "main.ts",
-      "polyfills": "polyfills.ts",
-      "test": "test.ts",
-      "tsconfig": "tsconfig.app.json",
-      "testTsconfig": "tsconfig.spec.json",
-      "prefix": "app",
-      "serviceWorker": true,
-      "styles": [
-        "styles.css",
-        "../node_modules/flipclock/compiled/flipclock.css"
-      ],
-      "scripts": [
-        "../node_modules/flipclock/compiled/flipclock.min.js"
-      ],
-      "environmentSource": "environments/environment.ts",
-      "environments": {
-        "dev": "environments/environment.ts",
-        "prod": "environments/environment.prod.ts"
-      }
+  "apps": [{
+    "root": "src",
+    "outDir": "dist",
+    "assets": [
+      "assets",
+      "favicon.ico"
+    ],
+    "index": "index.html",
+    "main": "main.ts",
+    "polyfills": "polyfills.ts",
+    "test": "test.ts",
+    "tsconfig": "tsconfig.app.json",
+    "testTsconfig": "tsconfig.spec.json",
+    "prefix": "app",
+    "serviceWorker": true,
+    "styles": [
+      "styles.css",
+      "../node_modules/materialize-css/dist/css/materialize.min.css",
+
+      "../node_modules/flipclock/compiled/flipclock.css",
+      "../node_modules/textillate/assets/animate.css",
+      "../node_modules/fullcalendar/dist/fullcalendar.min.css"
+
+
+    ],
+    "scripts": [
+            "../node_modules/materialize-css/dist/js/materialize.min.js",
+      "../node_modules/flipclock/compiled/flipclock.min.js",
+      "../node_modules/moment/min/moment.min.js",
+      "../node_modules/fullcalendar/dist/fullcalendar.min.js",
+      "../node_modules/textillate/assets/jquery.fittext.js",
+      "../node_modules/textillate/assets/jquery.lettering.js",
+      "../node_modules/textillate/jquery.textillate.js"
+
+    ],
+    "environmentSource": "environments/environment.ts",
+    "environments": {
+      "dev": "environments/environment.ts",
+      "prod": "environments/environment.prod.ts"
     }
-  ],
+  }],
   "e2e": {
     "protractor": {
       "config": "./protractor.conf.js"
     }
   },
-  "lint": [
-    {
+  "lint": [{
       "project": "src/tsconfig.app.json"
     },
     {
@@ -56,7 +66,6 @@
   },
   "defaults": {
     "styleExt": "css",
-    "component": {
-    }
+    "component": {}
   }
 }
