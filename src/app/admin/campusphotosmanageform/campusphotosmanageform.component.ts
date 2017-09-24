@@ -166,6 +166,7 @@ export class CampusphotosmanageformComponent implements OnInit {
         this.db.object('/CampusPhotos/' + this.CampusEventPhotos.id)
           .update({
             Name: this.CampusEventPhotos.Name,
+            GallaryUrl:this.CampusEventPhotos.GallaryUrl,
             UpdateTime: Date.now().toString()
 
           })
